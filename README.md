@@ -12,7 +12,7 @@ The Library Management System (LMS) is designed to efficiently manage library op
 
 - **Store book and user details**
 - **Librarian functions like - adding, removing and updating a book, adding and removing users** 
-- **User functions like - Borrowing a book, returning a book and providing review for a book**
+- **User functions like - Borrowing a book,searching for a book, returning a book and providing review for a book**
 - **Create a User interface for application where librarian and users would have different views based on their roles**
 
 ---
@@ -49,23 +49,19 @@ Creating a user-friendly interface for borrowers and librarians to access and re
 
 ## Decision Log and Consequences
 
-| Area                    | Decision                                                                | Rationale                                                                                                                                                                                                                                    |
-|-------------------------| ----------------------------------------------------------------------- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| IDE                     | [IntelliJ](https://www.jetbrains.com/idea/)                                | IntelliJ is a wonderful IDE to use for a Java project since everyone on the team has used it.                                                                                                                                                |
-| Dependency Management   | [Maven](https://maven.apache.org/download.cgi)                             | The project object model file (POM.xml) is something we are familiar with, and Maven is a popular build automation and project management tool. It supports the management of project lifecycles, build processes, and project dependencies. |
-| Project Scope           | Library Management System                                               | The scope of a Library Management System (LMS) project includes the development and implementation of core features such as book and borrower management, user interfaces, data storage.                                                     |
-| Communication Mechanism | Microsoft Teams and Emails                                              | We decided to use these platforms for communication because everyone is active on teams and everyone keeps constantly checking their emails                                                                                                  |
-| Merging Branches        | Make a PR, get the other team members to approve it, and then merge it. | Everyone would be aware of the modifications each of us has made. In this way conflicts can also be avoided.                                                                                                                                 |
+| Area                    | Decision                                                                           | Rationale                                                                                                                                                                                                                                    |
+|-------------------------|------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| IDE                     | [IntelliJ](https://www.jetbrains.com/idea/)                                        | IntelliJ is a wonderful IDE to use for a Java project since everyone on the team has used it.                                                                                                                                                |
+| Dependency Management   | [Maven](https://maven.apache.org/download.cgi)                                     | The project object model file (POM.xml) is something we are familiar with, and Maven is a popular build automation and project management tool. It supports the management of project lifecycles, build processes, and project dependencies. |
+| Project Scope           | Library Management System                                                          | The scope of a Library Management System (LMS) project includes the development and implementation of core features such as book and borrower management, user interfaces, data storage.                                                     |
+| Communication Mechanism | Microsoft Teams and Emails                                                         | We decided to use these platforms for communication because everyone is active on teams and everyone keeps constantly checking their emails                                                                                                  |
+| Merging Branches        | Make a PR, get the other team members to review and approve it, and then merge it. | Everyone would be aware of the modifications each of us has made. In this way conflicts can also be avoided.                                                                                                                                 |
 
 
 <br>
 
-## Purpose
-
-Creating a user friendly Library Management System, which would handle adding, updating and removing books from a library which would be done by library admin, and also allows user to borrow books and write review.
-
 ## Project Members
-
+NOTE: Right now, area's that we all are going to work on are really vague, hoping that as time goes by we would figure out what each member is accurately doing and update readme accordingly and also incorporate professor's feedback. 
 | Member                 | Area                           | Saying                         |
 |------------------------|--------------------------------|--------------------------------|
 | Uma Sailendra Muthyala | Book                           | Knowledge is power             |
@@ -78,11 +74,6 @@ Creating a user friendly Library Management System, which would handle adding, u
 ## Conflict Resolution
 
 We usually think team issues are mostly due to partial understanding or misunderstanding so, we as a team have decided to speak up, communicate and clarify each other's questions in a timely and a respectful manner.
-`<br/>`
-
-## Communication Mechanism
-
-Microsoft Teams and Emails - We decided to use these platforms for communication because everyone is active on teams and everyone keeps constantly checking their emails.
 `<br/>`
 
 ---
