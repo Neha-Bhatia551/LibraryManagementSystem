@@ -1,4 +1,3 @@
-
 # Library Management System
 
 The goal of the Library Management System (LMS) is to provide a digital platform that makes it easier to manage a library's resources, such as its books, borrowers, due dates, and inventory, efficiently and in an orderly way. By automating and optimizing key library procedures, the system seeks to enhance the entire library experience for employees as well as users.
