@@ -68,6 +68,7 @@ NOTE: Right now, area's that we all are going to work on are really vague, hopin
 | Sergei Kalachev        | Review                         | Si vis pacem, para bellum      |
 | Daniel Sakelaris       | Functions                      | YOLO                           |
 | Neha Bhatia            | Library Features and functions | Hardwork is the key to success |
+| Zaeem Khan             | User                           | Work smarter not harder        |
 
 <br/>
 
