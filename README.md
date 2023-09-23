@@ -75,6 +75,6 @@ NOTE: Right now, area's that we all are going to work on are really vague, hopin
 ## Conflict Resolution
 
 We usually think team issues are mostly due to partial understanding or misunderstanding so, we as a team have decided to speak up, communicate and clarify each other's questions in a timely and a respectful manner.
-`<br/>`
+
 
 ---
