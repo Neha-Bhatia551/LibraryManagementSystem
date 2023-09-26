@@ -73,10 +73,10 @@ Creating a user friendly Library Management System, which would handle adding, u
 ## Project Members
 
 | Member                 | Area      | Saying                    |
-| ---------------------- | --------- | ------------------------- |
+|------------------------| --------- | ------------------------- |
 | Uma Sailendra Muthyala | Book      | Knowledge is power        |
 | Sergei Kalachev        | Review    | Si vis pacem, para bellum |
-| Daniel Sakelaris       | Functions | YOLO                      |
+| Daniel Sakelaris test    | Functions | YOLO                      |
 
 <br/>
 
