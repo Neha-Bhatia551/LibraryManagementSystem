@@ -14,6 +14,8 @@ The Library Management System (LMS) is designed to efficiently manage library op
 - **Librarian functions like - adding, removing and updating a book, adding and removing users** 
 - **User functions like - Borrowing a book,searching for a book, returning a book and providing review for a book**
 - **Create a User interface for application where librarian and users would have different views based on their roles**
+- **library appointments**
+- **Book Reservations**
 
 ---
 
@@ -67,7 +69,7 @@ NOTE: Right now, area's that we all are going to work on are really vague, hopin
 | Uma Sailendra Muthyala | Book                           | Knowledge is power             |
 | Sergei Kalachev        | Review                         | Si vis pacem, para bellum      |
 | Daniel Sakelaris       | Functions                      | YOLO                           |
-| Neha Bhatia            | Library Features and functions | Hardwork is the key to success |
+| Neha Bhatia            | BookReservation                | Hardwork is the key to success |
 | Zaeem Khan             | User                           | Work smarter not harder        |
 
 <br/>
@@ -75,6 +77,6 @@ NOTE: Right now, area's that we all are going to work on are really vague, hopin
 ## Conflict Resolution
 
 We usually think team issues are mostly due to partial understanding or misunderstanding so, we as a team have decided to speak up, communicate and clarify each other's questions in a timely and a respectful manner.
-`<br/>`
+
 
 ---
