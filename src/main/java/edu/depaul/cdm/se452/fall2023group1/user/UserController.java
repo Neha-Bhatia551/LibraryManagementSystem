@@ -12,11 +12,11 @@ import java.util.List;
 @RequestMapping("/users")
 @Log4j2
 public class UserController {
-    @Autowired
-    private UserService service;
+//    @Autowired
+//    private UserRepository repository;
 
     @GetMapping
     public List<User> list() {
-        return service.list();
+        return null;
     }
 }

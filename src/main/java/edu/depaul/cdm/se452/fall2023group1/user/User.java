@@ -3,12 +3,10 @@ package edu.depaul.cdm.se452.fall2023group1.user;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import java.util.List;
 
 @Data
 @Entity
@@ -18,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name="user_id")
@@ -30,10 +28,6 @@ public class User {
     @Column(name="email")
     @Email(regexp = ".+[@].+[\\.].+")
     private String email;
-
-    // Currently two roles - Librarian & Borrower
-    // TODO: Check if more roles are necessary
     @Column(name="role")
     private String role;
-    private List<String> borrowedBooks;
 }
