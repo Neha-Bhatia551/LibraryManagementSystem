@@ -56,3 +56,14 @@
 2023-10-01 16:40:32,194 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryProjectApplication using Java 17.0.7 with PID 29876 (D:\School work\Grad_stuff\SE 452\libraryproject\target\classes started by hafiz in D:\School work\Grad_stuff\SE 452\libraryproject)
 2023-10-01 16:40:32,200 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
 2023-10-01 16:40:38,378 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryProjectApplication in 6.645 seconds (process running for 7.688)
+2023-10-01 16:47:37,748 INFO e.d.c.s.f.LibraryProjectApplication [main] Library app is running...
+2023-10-01 16:47:37,918 INFO e.d.c.s.f.LibraryProjectApplication [restartedMain] Library app is running...
+2023-10-01 16:47:38,360 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryProjectApplication using Java 17.0.7 with PID 30772 (D:\School work\Grad_stuff\SE 452\libraryproject\target\classes started by hafiz in D:\School work\Grad_stuff\SE 452\libraryproject)
+2023-10-01 16:47:38,365 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-10-01 16:47:43,927 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryProjectApplication in 6.0 seconds (process running for 7.062)
+2023-10-01 17:05:29,673 INFO e.d.c.s.f.LibraryProjectApplication [main] Library app is running...
+2023-10-01 17:05:29,881 INFO e.d.c.s.f.LibraryProjectApplication [restartedMain] Library app is running...
+2023-10-01 17:05:30,373 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryProjectApplication using Java 17.0.7 with PID 17612 (D:\School work\Grad_stuff\SE 452\libraryproject\target\classes started by hafiz in D:\School work\Grad_stuff\SE 452\libraryproject)
+2023-10-01 17:05:30,381 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-10-01 17:05:36,537 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryProjectApplication in 6.646 seconds (process running for 7.884)
+2023-10-01 17:05:42,547 INFO e.d.c.s.f.u.UserController [http-nio-8080-exec-1] Getting all users
