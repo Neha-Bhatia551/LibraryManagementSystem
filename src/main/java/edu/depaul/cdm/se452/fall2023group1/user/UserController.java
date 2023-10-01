@@ -13,7 +13,7 @@ public class UserController {
     @Autowired
     private UserRepository repository;
 
-    @PostMapping
+    @PostMapping("/add/{id}")
     public User addAUser(@RequestBody User user) {
         log.info("adding a user");
         return repository.save(user);
