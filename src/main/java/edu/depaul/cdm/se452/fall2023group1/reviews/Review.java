@@ -8,14 +8,14 @@ import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.core.config.plugins.validation.constraints.Required;
 
 @Entity
-@Table(name = "reviews")
+@Table(name = "review")
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor(force = true)
 public class Review {
     @Id
 //    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="review_id")
+    @Column(name="id")
     @NonNull
     private Integer reviewId;
 
