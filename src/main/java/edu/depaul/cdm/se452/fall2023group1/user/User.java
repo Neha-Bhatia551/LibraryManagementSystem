@@ -16,7 +16,7 @@ import jakarta.validation.constraints.Email;
 @NoArgsConstructor
 public class User {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name="user_id")

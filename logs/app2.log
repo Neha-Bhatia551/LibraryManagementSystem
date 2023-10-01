@@ -67,3 +67,19 @@
 2023-10-01 17:05:30,381 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
 2023-10-01 17:05:36,537 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryProjectApplication in 6.646 seconds (process running for 7.884)
 2023-10-01 17:05:42,547 INFO e.d.c.s.f.u.UserController [http-nio-8080-exec-1] Getting all users
+2023-10-01 17:13:31,149 INFO e.d.c.s.f.LibraryProjectApplication [main] Library app is running...
+2023-10-01 17:13:31,366 INFO e.d.c.s.f.LibraryProjectApplication [restartedMain] Library app is running...
+2023-10-01 17:13:31,828 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryProjectApplication using Java 17.0.7 with PID 31160 (D:\School work\Grad_stuff\SE 452\libraryproject\target\classes started by hafiz in D:\School work\Grad_stuff\SE 452\libraryproject)
+2023-10-01 17:13:31,834 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-10-01 17:13:38,221 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryProjectApplication in 6.843 seconds (process running for 8.069)
+2023-10-01 17:13:53,501 INFO e.d.c.s.f.u.UserController [http-nio-8080-exec-2] Getting all users
+2023-10-01 17:44:14,936 INFO e.d.c.s.f.LibraryProjectApplication [main] Library app is running...
+2023-10-01 17:44:15,104 INFO e.d.c.s.f.LibraryProjectApplication [restartedMain] Library app is running...
+2023-10-01 17:44:15,506 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryProjectApplication using Java 17.0.7 with PID 25692 (D:\School work\Grad_stuff\SE 452\libraryproject\target\classes started by hafiz in D:\School work\Grad_stuff\SE 452\libraryproject)
+2023-10-01 17:44:15,510 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-10-01 17:44:21,350 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryProjectApplication in 6.238 seconds (process running for 7.426)
+2023-10-01 17:46:57,390 INFO e.d.c.s.f.LibraryProjectApplication [main] Library app is running...
+2023-10-01 17:46:57,538 INFO e.d.c.s.f.LibraryProjectApplication [restartedMain] Library app is running...
+2023-10-01 17:46:58,010 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryProjectApplication using Java 17.0.7 with PID 28812 (D:\School work\Grad_stuff\SE 452\libraryproject\target\classes started by hafiz in D:\School work\Grad_stuff\SE 452\libraryproject)
+2023-10-01 17:46:58,014 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-10-01 17:47:03,585 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryProjectApplication in 6.038 seconds (process running for 7.072)
