@@ -14,7 +14,7 @@ import lombok.*;
 @Table(name = "Books")
 public class Book {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column( unique = true)
     private String ISBN;
