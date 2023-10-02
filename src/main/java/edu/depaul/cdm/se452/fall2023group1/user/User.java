@@ -3,12 +3,10 @@ package edu.depaul.cdm.se452.fall2023group1.user;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
-import java.util.List;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 
 @Data
 @Entity
@@ -30,10 +28,6 @@ public class User {
     @Column(name="email")
     @Email(regexp = ".+[@].+[\\.].+")
     private String email;
-
-    // Currently two roles - Librarian & Borrower
-    // TODO: Check if more roles are necessary
     @Column(name="role")
     private String role;
-    private List<String> borrowedBooks;
 }
