@@ -1,4 +1,5 @@
 package edu.depaul.cdm.se452.fall2023group1.bookreservations;
+import edu.depaul.cdm.se452.fall2023group1.books.Book;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -24,7 +25,7 @@ public class BookReservationController {
     //TODO: Handle if service returns null, show appropriate message to the user
 
 
-    @GetMapping("/")
+    @GetMapping
     @Operation(summary = "Returns all the reservations from the database")
     @ApiResponse(responseCode = "200", description = "valid response",
             content = {@Content(mediaType="application/json", schema=@Schema(implementation=BookReservation.class))})
@@ -45,23 +46,23 @@ public class BookReservationController {
     @Operation(summary = "Save the reservation and returns the reservation id")
     public long save(BookReservation reservation) {
         log.traceEntry("enter save", reservation);
-        service.save(reservation);
+        BookReservation updatedreservation = service.save(reservation);
         log.traceExit("exit save", reservation);
-        return reservation.getReservationId();
+        return updatedreservation.getReservationId();
     }
 
-    @PostMapping("/validated")
+    @PostMapping("/valid")
     @Operation(summary = "Save the reservation and returns the reservation id")
     public ResponseEntity<String> validatedSave(@Valid @RequestBody BookReservation reservation) {
         log.traceEntry("enter save", reservation);
         service.save(reservation);
         log.traceExit("exit save", reservation);
-        return ResponseEntity.ok("new id is " + reservation.getReservationId());
+        return ResponseEntity.ok("New reservation id is " + reservation.getReservationId());
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     @Operation(summary = "Delete the reservation")
-    public void delete(long id) {
+    public void delete(@PathVariable long id) {
         //TODO: check role of the user before deleting reservation
         log.traceEntry("Enter delete", id);
         service.deleteReservation(id);
@@ -70,10 +71,13 @@ public class BookReservationController {
 
     //TODO: implement get apis to get reservations by user id and book id
     //TODO: implement update api to update return date of a reservation
-    //    @GetMapping("/getReservationsByUser/{userId}")
-//    public List<BookReservation> getBookReservationsById(@PathVariable int userId) {
-//
-//    }
+    //TODO: handle exceptions
+
+
+    /*@GetMapping("/getReservationsByUser/{userId}")
+    public List<BookReservation> getBookReservationsById(@PathVariable int userId) {
+
+    }*/
 
 
 }
