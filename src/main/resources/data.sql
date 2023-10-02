@@ -9,3 +9,5 @@ INSERT INTO review (id, author, isbn, stars, description) VALUES (1, 1, '9780321
 INSERT INTO review (id, author, isbn, stars, description) VALUES(2, 1, '9780593128508', 4, 'description 2');
 INSERT INTO review (id, author, isbn, stars, description) VALUES(3, 123, '123-456-234', 3, 'some description 3');
 
+INSERT INTO BOOKRESERVATIONS (book_id, user_id, borrow_date, return_date, type) VALUES (223, 123, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'Digital');
+INSERT INTO BOOKRESERVATIONS (book_id, user_id, borrow_date, return_date, type) VALUES (1234, 456, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'Physical');
