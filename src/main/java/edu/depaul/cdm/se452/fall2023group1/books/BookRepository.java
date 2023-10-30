@@ -1,22 +1,17 @@
-
 package edu.depaul.cdm.se452.fall2023group1.books;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
-    List<Book> findByTitle(String title);
-    List<Book> findByAuthor(String author);
-
-    // added few more finders
-
-    List<Book> findByGenre(String genre);
-    List<Book> findByPublicationYear(int year);
+    Page<Book> findByTitle(String title, Pageable pageable);
+    Page<Book> findByAuthor(String author, Pageable pageable);
+    Page<Book> findByGenre(String genre, Pageable pageable);
+    Page<Book> findByPublicationYear(int year, Pageable pageable);
     Book findByISBN(String ISBN);
-    Book findBooksByBookRating(double Rating);
-
-
+    List<Book> findBooksByGlobalRating(double Rating);
 }

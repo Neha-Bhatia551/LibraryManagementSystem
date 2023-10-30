@@ -4,7 +4,7 @@ server:
 # H2 In-Memory Database Configuration for Tests
 spring:
   datasource:
-    url: "jdbc:h2:mem:testdb"
+    url: "jdbc:h2:mem:test-db"
     driverClassName: "org.h2.Driver"
     username: "sa"
     password: "password"
@@ -15,3 +15,13 @@ spring:
     hibernate.ddl-auto: create-drop
     defer-datasource-initialization: true
     properties.hibernate.dialect: org.hibernate.dialect.H2Dialect
+
+
+app:
+  doc:
+    version: 2023-Fall
+    title: SE352-452 Library Management test environment
+    description: This is documentation for library management system for SE352-452
+    terms: http://swagger.io/terms/
+    license:  Apache 2.0
+    url: http://springdoc.org
