@@ -1,13 +1,11 @@
 package edu.depaul.cdm.se452.fall2023group1.bookreservations;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import jakarta.validation.constraints.NotBlank;
 import java.sql.Timestamp;
 
 @Data

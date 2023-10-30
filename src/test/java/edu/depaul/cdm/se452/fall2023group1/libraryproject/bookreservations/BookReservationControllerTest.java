@@ -48,45 +48,54 @@ public class BookReservationControllerTest {
     @Test
     public void addReservation() throws Exception {
         Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-
-        BookReservation reservation = BookReservation.builder().bookId(123).reservationId(1).
+        long beforeSize = reservationRepository.count();
+        BookReservation reservation = BookReservation.builder().bookId(123).
                 userId(12).borrowDate(currentTimestamp).returnDate(currentTimestamp).type(ReservationType.DIGITAL).build();
         String reservationAsJson = objectMapper.writeValueAsString(reservation);
-        long beforeSize = reservationRepository.count();
         var request = MockMvcRequestBuilders.post(RESERVATION_URL)
-                .contentType(MediaType.APPLICATION_JSON).contentType(reservationAsJson);
+                .contentType(MediaType.APPLICATION_JSON).content(reservationAsJson);
         ResultActions response = mockMvc.perform(request);
-        var jsonResponse = response.andReturn().getResponse().getContentAsString();
-        long updatedReservationId = new ObjectMapper().readValue(jsonResponse, Long.class);
+        long afterSize = reservationRepository.count();
+        var str = response.andReturn().getResponse().getContentAsString();
         response.andExpect(MockMvcResultMatchers.status().isOk());
-        assertNotEquals(updatedReservationId, reservation.getReservationId());
-    }
+        assertEquals(str,"New reservation id is 3");
+        assertEquals(beforeSize + 1, afterSize);
 
-    //TODO: fix this test case, problem is while passing timestamp values
-//    @Test
-//    public void addReservation() throws Exception {
-//        Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-//
-//        BookReservation reservation = BookReservation.builder().bookId(123).reservationId(1).
-//                userId(12).borrowDate(currentTimestamp).returnDate(currentTimestamp).type(ReservationType.DIGITAL).build();
-//        String reservationAsJson = objectMapper.writeValueAsString(reservation);
-//        long beforeSize = reservationRepository.count();
-//        var request = MockMvcRequestBuilders.post(RESERVATION_URL)
-//                .contentType(MediaType.APPLICATION_JSON).contentType(reservationAsJson);
-//        ResultActions response = mockMvc.perform(request);
-//        var jsonResponse = response.andReturn().getResponse().getContentAsString();
-//        //response.andExpect(MockMvcResultMatchers.status().isOk());
-//    }
+    }
 
     @Test
     public void removeStudent() throws Exception {
         long beforeSize = reservationRepository.count();
-        var request = MockMvcRequestBuilders.delete(RESERVATION_URL+"/1");
+        var request = MockMvcRequestBuilders.delete(RESERVATION_URL+"/delete/id/1");
         ResultActions response = mockMvc.perform(request);
         long afterSize = reservationRepository.count();
         response.andExpect(MockMvcResultMatchers.status().isOk());
         assertEquals(beforeSize - 1, afterSize);
     }
+
+    @Test
+    public void getReservationById() throws Exception {
+        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get(RESERVATION_URL + "/id/1"));
+        var str = response.andReturn().getResponse().getContentAsString();
+        BookReservation reservation = new ObjectMapper().readValue(str, BookReservation.class);
+        response.andExpect(MockMvcResultMatchers.status().isOk());
+        assertEquals(reservation.getReservationId(), 1);
+    }
+
+    @Test
+    public void getReservationByUserId() throws Exception {
+        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get(RESERVATION_URL + "/userid/123"));
+        response.andExpect(MockMvcResultMatchers.status().isOk());
+        response.andExpect(MockMvcResultMatchers.jsonPath("$.size()", CoreMatchers.is(1)));
+    }
+
+    @Test
+    public void getReservationByBookId() throws Exception {
+        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get(RESERVATION_URL + "/bookid/223"));
+        response.andExpect(MockMvcResultMatchers.status().isOk());
+        response.andExpect(MockMvcResultMatchers.jsonPath("$.size()", CoreMatchers.is(1)));
+    }
+
 
 
 }

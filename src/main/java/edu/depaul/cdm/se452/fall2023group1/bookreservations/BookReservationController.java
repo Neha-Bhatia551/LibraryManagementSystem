@@ -1,5 +1,4 @@
 package edu.depaul.cdm.se452.fall2023group1.bookreservations;
-import edu.depaul.cdm.se452.fall2023group1.books.Book;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -30,11 +29,10 @@ public class BookReservationController {
     @ApiResponse(responseCode = "200", description = "valid response",
             content = {@Content(mediaType="application/json", schema=@Schema(implementation=BookReservation.class))})
     public List<BookReservation> list() {
-        log.debug("Fetching bookreservations");
         return service.getAllReservations();
     }
 
-    @GetMapping("/getReservationById/{id}")
+    @GetMapping("/id/{id}")
     @Operation(summary = "Returns the reservation associated with that ID from the database")
     @ApiResponse(responseCode = "200", description = "valid response",
             content = {@Content(mediaType="application/json", schema=@Schema(implementation=BookReservation.class))})
@@ -44,40 +42,38 @@ public class BookReservationController {
 
     @PostMapping
     @Operation(summary = "Save the reservation and returns the reservation id")
-    public long save(BookReservation reservation) {
-        log.traceEntry("enter save", reservation);
-        BookReservation updatedreservation = service.save(reservation);
-        log.traceExit("exit save", reservation);
-        return updatedreservation.getReservationId();
-    }
-
-    @PostMapping("/valid")
-    @Operation(summary = "Save the reservation and returns the reservation id")
-    public ResponseEntity<String> validatedSave(@Valid @RequestBody BookReservation reservation) {
-        log.traceEntry("enter save", reservation);
+    public ResponseEntity<String> save(@Valid @RequestBody BookReservation reservation) {
         service.save(reservation);
-        log.traceExit("exit save", reservation);
         return ResponseEntity.ok("New reservation id is " + reservation.getReservationId());
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/id/{id}")
     @Operation(summary = "Delete the reservation")
     public void delete(@PathVariable long id) {
         //TODO: check role of the user before deleting reservation
-        log.traceEntry("Enter delete", id);
         service.deleteReservation(id);
-        log.traceExit("Exit delete");
     }
 
-    //TODO: implement get apis to get reservations by user id and book id
+    @GetMapping("/userid/{userid}")
+    @Operation(summary = "Returns the reservations associated with that user ID from the database")
+    @ApiResponse(responseCode = "200", description = "valid response",
+            content = {@Content(mediaType="application/json", schema=@Schema(implementation=BookReservation.class))})
+    public List<BookReservation> getBookReservationsByUserId(@PathVariable int userid) {
+        return service.getReservationsByUserId(userid);
+    }
+
+    @GetMapping("/bookid/{bookid}")
+    @Operation(summary = "Returns the reservations associated with that book ID from the database")
+    @ApiResponse(responseCode = "200", description = "valid response",
+            content = {@Content(mediaType="application/json", schema=@Schema(implementation=BookReservation.class))})
+    public List<BookReservation> getBookReservationsByBookId(@PathVariable int bookid) {
+        return service.getReservationsByBookId(bookid);
+    }
+
+
+
     //TODO: implement update api to update return date of a reservation
     //TODO: handle exceptions
-
-
-    /*@GetMapping("/getReservationsByUser/{userId}")
-    public List<BookReservation> getBookReservationsById(@PathVariable int userId) {
-
-    }*/
 
 
 }
