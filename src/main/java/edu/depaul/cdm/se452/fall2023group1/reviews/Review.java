@@ -1,6 +1,5 @@
 package edu.depaul.cdm.se452.fall2023group1.reviews;
 
-import edu.depaul.cdm.se452.fall2023group1.books.Book;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,10 +23,9 @@ public class Review {
     @NonNull
     private Integer userId;
 
-    @ManyToOne
-    @JoinColumn(name = "isbn", referencedColumnName = "ISBN")
+    @Column(name = "isbn")
     @NonNull
-    private Book book;
+    private String isbn;
 
     @Column(name = "stars")
     @NonNull
