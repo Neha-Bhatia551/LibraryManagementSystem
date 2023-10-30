@@ -16,7 +16,7 @@ spring:
 app:
   doc:
     version: 2023-Fall
-    title: SE352-452 Library Management
+    title: SE352-452 Library Management development environment
     description: This is documentation for library management system for SE352-452
     terms: http://swagger.io/terms/
     license:  Apache 2.0
