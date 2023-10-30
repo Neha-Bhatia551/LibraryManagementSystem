@@ -19,8 +19,11 @@ public class BookReservation {
     @Column(name="reservation_id")
     private long reservationId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Book book;
+    @Column(name="book_id")
+    private long bookId;
+    //TODO: check issues with below
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    private Book book;
 
     @Column(name="user_id")
     private int userId;

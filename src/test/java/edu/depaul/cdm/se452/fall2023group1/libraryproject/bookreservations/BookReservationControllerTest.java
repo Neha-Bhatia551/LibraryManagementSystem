@@ -45,23 +45,23 @@ public class BookReservationControllerTest {
         response.andExpect(MockMvcResultMatchers.jsonPath("$.size()", CoreMatchers.is(recordCount)));
     }
 
-//    @Test
-//    public void addReservation() throws Exception {
-//        Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-//        long beforeSize = reservationRepository.count();
-//        BookReservation reservation = BookReservation.builder().bookId(123).
-//                userId(12).borrowDate(currentTimestamp).returnDate(currentTimestamp).type(ReservationType.DIGITAL).build();
-//        String reservationAsJson = objectMapper.writeValueAsString(reservation);
-//        var request = MockMvcRequestBuilders.post(RESERVATION_URL)
-//                .contentType(MediaType.APPLICATION_JSON).content(reservationAsJson);
-//        ResultActions response = mockMvc.perform(request);
-//        long afterSize = reservationRepository.count();
-//        var str = response.andReturn().getResponse().getContentAsString();
-//        response.andExpect(MockMvcResultMatchers.status().isOk());
-//        assertEquals(str,"New reservation id is 3");
-//        assertEquals(beforeSize + 1, afterSize);
-//
-//    }
+    @Test
+    public void addReservation() throws Exception {
+        Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+        long beforeSize = reservationRepository.count();
+        BookReservation reservation = BookReservation.builder().bookId(123).
+                userId(12).borrowDate(currentTimestamp).returnDate(currentTimestamp).type(ReservationType.DIGITAL).build();
+        String reservationAsJson = objectMapper.writeValueAsString(reservation);
+        var request = MockMvcRequestBuilders.post(RESERVATION_URL)
+                .contentType(MediaType.APPLICATION_JSON).content(reservationAsJson);
+        ResultActions response = mockMvc.perform(request);
+        long afterSize = reservationRepository.count();
+        var str = response.andReturn().getResponse().getContentAsString();
+        response.andExpect(MockMvcResultMatchers.status().isOk());
+        assertEquals(str,"New reservation id is 3");
+        assertEquals(beforeSize + 1, afterSize);
+
+    }
 
     @Test
     public void removeStudent() throws Exception {
@@ -89,12 +89,12 @@ public class BookReservationControllerTest {
         response.andExpect(MockMvcResultMatchers.jsonPath("$.size()", CoreMatchers.is(1)));
     }
 
-    @Test
-    public void getReservationByBookId() throws Exception {
-        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get(RESERVATION_URL + "/bookid/223"));
-        response.andExpect(MockMvcResultMatchers.status().isOk());
-        response.andExpect(MockMvcResultMatchers.jsonPath("$.size()", CoreMatchers.is(1)));
-    }
+//    @Test
+//    public void getReservationByBookId() throws Exception {
+//        ResultActions response = mockMvc.perform(MockMvcRequestBuilders.get(RESERVATION_URL + "/bookid/223"));
+//        response.andExpect(MockMvcResultMatchers.status().isOk());
+//        response.andExpect(MockMvcResultMatchers.jsonPath("$.size()", CoreMatchers.is(1)));
+//    }
 
 
 

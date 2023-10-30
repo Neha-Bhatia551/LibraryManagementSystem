@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface BookReservationRepository extends JpaRepository<BookReservation, Long> {
     List<BookReservation> findByUserId(int id);
+    //TODO: check how to get below finder working
     List<BookReservation> findByBookId(int id);
 
 }
