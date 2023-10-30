@@ -66,6 +66,7 @@ public class BookRepositoryIntegrationTest {
         // Assert that the updated book exists and the title has been updated
         assertThat(found).isNotEmpty();
         assertThat(found.get().getTitle()).isEqualTo("Updated Book");
+
     }
 
 

@@ -19,6 +19,7 @@ import java.util.List;
 @SpringBootTest
 @ActiveProfiles("test")
 public class BookControllerTest {
+
     private static final Logger logger = LoggerFactory.getLogger(BookControllerTest.class);
 
     @Autowired
