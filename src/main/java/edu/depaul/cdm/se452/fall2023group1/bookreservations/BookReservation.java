@@ -1,10 +1,8 @@
 package edu.depaul.cdm.se452.fall2023group1.bookreservations;
+import edu.depaul.cdm.se452.fall2023group1.books.Book;
 import jakarta.persistence.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.sql.Timestamp;
 
@@ -20,8 +18,10 @@ public class BookReservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="reservation_id")
     private long reservationId;
-    @Column(name="book_id")
-    private long bookId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Book book;
+
     @Column(name="user_id")
     private int userId;
 
@@ -33,4 +33,7 @@ public class BookReservation {
     private Timestamp returnDate;
     @Enumerated(EnumType.STRING)
     private ReservationType type;
+
+    @Column(name="checked_out")
+    private Boolean checkedOut;
 }
