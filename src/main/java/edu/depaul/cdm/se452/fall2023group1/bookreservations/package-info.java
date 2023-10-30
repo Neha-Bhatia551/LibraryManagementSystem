@@ -8,7 +8,7 @@ package edu.depaul.cdm.se452.fall2023group1.bookreservations;
  * <li> added documentation for swagger
  * <li> Used Enum for Reservation types and @Enumerated annotation in Bookreservation.java
  * <li> added unit test cases
- * </ul>
+ * </ul> Added extra finders
  *
  * @author Neha
  */
