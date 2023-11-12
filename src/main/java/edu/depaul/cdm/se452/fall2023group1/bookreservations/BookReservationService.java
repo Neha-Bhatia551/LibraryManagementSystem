@@ -16,7 +16,7 @@ public class BookReservationService {
     private BookReservationRepository repo;
 
     public List<BookReservation> getAllReservations() {
-        List<BookReservation> allReservations = StreamSupport.stream(repo.findAll().spliterator(), false).collect(Collectors.toList());
+        List<BookReservation> allReservations = repo.findAll();
         return allReservations;
     }
 
@@ -26,12 +26,12 @@ public class BookReservationService {
     }
 
     public List<BookReservation> getReservationsByUserId(int id) {
-        List<BookReservation> reservations = StreamSupport.stream(repo.findByUserId(id).spliterator(), false).collect(Collectors.toList());
+        List<BookReservation> reservations = repo.findByUserId(id);
         return reservations;
     }
 
-    public List<BookReservation> getReservationsByBookId(int id) {
-        List<BookReservation> reservations = StreamSupport.stream(repo.findByBookId(id).spliterator(), false).collect(Collectors.toList());
+    public List<BookReservation> getReservationsByBookId(long id) {
+        List<BookReservation> reservations = repo.findByBookId(id);
         return reservations;
     }
 

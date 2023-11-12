@@ -9,5 +9,5 @@ INSERT INTO reviews (user_id, book_id, stars, description) VALUES (123, 223, 5, 
 INSERT INTO reviews (user_id, book_id, stars, description) VALUES (123, 1234, 4, 'a short description for book 1234');
 INSERT INTO reviews (user_id, book_id, stars, description) VALUES (456, 223, 3, 'another review for book 223');
 
-INSERT INTO BOOKRESERVATIONS (book_id, user_id, borrow_date, return_date, type, checked_out) VALUES (1, 123, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'DIGITAL', true);
-INSERT INTO BOOKRESERVATIONS (book_id, user_id, borrow_date, return_date, type, checked_out) VALUES (2, 456, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'PHYSICAL', false);
+INSERT INTO BOOKRESERVATIONS (book_id, user_id, borrow_date, return_date, type, checked_out) VALUES (1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'DIGITAL', true);
+INSERT INTO BOOKRESERVATIONS (book_id, user_id, borrow_date, return_date, type, checked_out) VALUES (2, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'PHYSICAL', false);
