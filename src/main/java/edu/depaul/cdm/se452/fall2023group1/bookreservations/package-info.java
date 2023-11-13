@@ -10,8 +10,17 @@ package edu.depaul.cdm.se452.fall2023group1.bookreservations;
  * <li> added unit test cases
  * <li> used JsonIgnoreProperties annotation AND @Transactional
  * <li> Added extra finders and custom queries
+ * <li> learnt about docker and setup postgres along with docker</li>
+ * <li></li>
  * </ul>
  *
  *
  * @author Neha
+ */
+
+/**
+ * TODO's
+ * add exception handling
+ * add update reservation apis
+
  */

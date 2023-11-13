@@ -4,17 +4,24 @@ server:
 # H2 In-Memory Database Configuration for Tests
 spring:
   datasource:
-    url: "jdbc:h2:mem:test-db"
-    driverClassName: "org.h2.Driver"
-    username: "sa"
-    password: "password"
-  h2.console.enabled: true
+#    url: "jdbc:h2:mem:test-db"
+#    driverClassName: "org.h2.Driver"
+#    username: "sa"
+#    password: "password"
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: password
+  #h2.console.enabled: true
 
   jpa:
     show-sql: true
-    hibernate.ddl-auto: create-drop
+    hibernate.ddl-auto: create
     defer-datasource-initialization: true
-    properties.hibernate.dialect: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    #properties.hibernate.dialect: org.hibernate.dialect.H2Dialect
+  sql:
+    init:
+      mode: always
 
 
 
