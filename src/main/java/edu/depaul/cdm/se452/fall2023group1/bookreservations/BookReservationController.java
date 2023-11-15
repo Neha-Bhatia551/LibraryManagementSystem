@@ -66,7 +66,7 @@ public class BookReservationController {
     @Operation(summary = "Returns the reservations associated with that book ID from the database")
     @ApiResponse(responseCode = "200", description = "valid response",
             content = {@Content(mediaType="application/json", schema=@Schema(implementation=BookReservation.class))})
-    public List<BookReservation> getBookReservationsByBookId(@PathVariable int bookid) {
+    public List<BookReservation> getBookReservationsByBookId(@PathVariable long bookid) {
         return service.getReservationsByBookId(bookid);
     }
 

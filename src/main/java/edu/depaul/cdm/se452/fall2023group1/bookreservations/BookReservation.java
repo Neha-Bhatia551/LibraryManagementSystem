@@ -1,5 +1,7 @@
 package edu.depaul.cdm.se452.fall2023group1.bookreservations;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import edu.depaul.cdm.se452.fall2023group1.books.Book;
+import edu.depaul.cdm.se452.fall2023group1.user.User;
 import jakarta.persistence.*;
 
 import lombok.*;
@@ -13,20 +15,21 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @Builder
 public class BookReservation {
-    //use uuid for primary key??
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="reservation_id")
     private long reservationId;
 
-    @Column(name="book_id")
-    private long bookId;
-    //TODO: check issues with below
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    private Book book;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @JoinColumn(name = "book_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private Book book;
 
-    @Column(name="user_id")
-    private int userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private User user;
 
     @Column(name="borrow_date")
     //@NotNull(message = "borrow date cannot be null/blank")
