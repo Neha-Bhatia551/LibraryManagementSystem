@@ -50,4 +50,34 @@ public class LibraryAppointmentRepositoryIntegrationTest {
         assertEquals(1L, foundAppointment.get().getId());
     }
 
+    @Test
+    @Order(3)
+    public void testUpdateAppointment() {
+        Long appointmentId = 1L; // Assuming this ID exists
+        Optional<LibraryAppointment> optionalAppointment = libraryAppointmentRepository.findById(appointmentId);
+        assertTrue(optionalAppointment.isPresent());
+
+        LibraryAppointment appointment = optionalAppointment.get();
+        appointment.setAppointmentType("Updated Type");
+        LibraryAppointment updatedAppointment = libraryAppointmentRepository.save(appointment);
+
+        assertEquals("Updated Type", updatedAppointment.getAppointmentType());
+    }
+
+    @Test
+    @Order(4)
+    public void testDeleteAppointment() {
+        Long appointmentId = 1L; // Assuming this ID exists
+        libraryAppointmentRepository.deleteById(appointmentId);
+        Optional<LibraryAppointment> deletedAppointment = libraryAppointmentRepository.findById(appointmentId);
+        assertFalse(deletedAppointment.isPresent());
+    }
+
+    @Test
+    @Order(5)
+    public void testFindNonExistentAppointment() {
+        Long nonExistentId = 999L;
+        Optional<LibraryAppointment> nonExistentAppointment = libraryAppointmentRepository.findById(nonExistentId);
+        assertFalse(nonExistentAppointment.isPresent());
+    }
 }
