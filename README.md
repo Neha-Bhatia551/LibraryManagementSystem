@@ -10,8 +10,8 @@ The goal of the Library Management System (LMS) is to provide a digital platform
 
 The Library Management System (LMS) is designed to efficiently manage library operations, offering the following key functionalities:
 
-- **Store book and user details**
-- **Librarian functions like - adding, removing and updating a book, adding and removing users** 
+- **Book Functions like -adding, deleting and updating, finding a book**
+- **Librarian functions like - adding and removing users** 
 - **User functions like - Borrowing a book,searching for a book, returning a book and providing review for a book**
 - **Create a User interface for application where librarian and users would have different views based on their roles**
 - **library appointments**
