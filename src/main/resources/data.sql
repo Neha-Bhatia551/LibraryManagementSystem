@@ -11,3 +11,11 @@ INSERT INTO reviews (user_id, book_id, stars, description) VALUES (456, 223, 3, 
 
 INSERT INTO BOOKRESERVATIONS (book_id, user_id, borrow_date, return_date, type, checked_out) VALUES (1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'DIGITAL', true);
 INSERT INTO BOOKRESERVATIONS (book_id, user_id, borrow_date, return_date, type, checked_out) VALUES (2, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'PHYSICAL', false);
+
+INSERT INTO library_appointment (id, user_id, appointment_type, time_slot)
+VALUES
+    (1, 123, 'General', '01/01/2023 10:00 - 01/01/2023 11:00'),
+    (2, 123, 'Computer', '01/02/2023 11:00 - 01/02/2023 12:00'),
+    (3, 456, 'Book', '01/03/2023 12:00 - 01/03/2023 13:00'),
+    (4, 456, 'Study', '01/04/2023 13:00 - 01/04/2023 14:00');
+
