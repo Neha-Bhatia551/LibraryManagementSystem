@@ -2,7 +2,10 @@ package edu.depaul.cdm.se452.fall2023group1.reviews;
 
 import edu.depaul.cdm.se452.fall2023group1.books.Book;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
 import lombok.*;
+
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "reviews")
@@ -30,6 +33,8 @@ public class Review {
 
     @Column(name = "stars")
     @NonNull
+    @Min(1)
+    @Max(5)
     private Integer stars;
 
     @Column(name = "description")

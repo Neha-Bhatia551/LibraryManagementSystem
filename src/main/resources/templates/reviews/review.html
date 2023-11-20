@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mock Book list</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/bulma/css/bulma.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/font-awesome/css/all.min.css}" />
+    <script type="text/javascript" th:src="@{/javascript/libraryManagement.js}"></script>
+</head>
+<body>
+    <h1 th:text="'Reviews for book id: ' + ${reviews[0].bookId}"></h1>
+        <div class="container">
+<!--            <div id="data"th:data="${reviews}">-->
+<!--                reviews-->
+<!--            </div>-->
+            <div th:each="r : ${reviews}" class="flex">
+                <div class="card mb-3">
+                    <div>
+                        <p><span th:text="'Stars: ' + ${r.stars}"> 1 </span></p>
+                        <p><span th:text="'Description: ' + ${r.description}"> 2 </span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
+
