@@ -34,7 +34,7 @@ public class BookController {
     public String list(Model model) {
         List<Book> books = service.list();
         model.addAttribute("books", books);
-        return "listBooks";
+        return "books/listBooks";
     }
 
 //    @PostMapping
@@ -115,26 +115,29 @@ public class BookController {
                               Pageable pageable, Model model) {
         Page<Book> books =service.searchBooks(query, filterType, pageable);
         model.addAttribute("books", books);
-        return "searchResults";
+        return "books/searchResults";
     }
 
     @GetMapping("/user")
-    public String showUserPage() {
-        return "user";
+    public String showUserPage(Model model) {
+
+        List<Book> books = service.list();  // Replace with your method to fetch books
+        model.addAttribute("books", books);
+        return "books/user";
     }
     // Admin dashboard
     @GetMapping("/admin")
     public String adminDashboard(Model model) {
         List<Book> books = service.list();
         model.addAttribute("books", books);
-        return "adminDashboard";
+        return "books/adminDashboard";
     }
 
     // Add a new book
     @GetMapping("/admin/add")
     public String showAddBookForm(Model model) {
         model.addAttribute("book", new Book());
-        return "adminAddBook";
+        return "books/adminAddBook";
     }
 
 
@@ -151,12 +154,18 @@ public class BookController {
         Book book = service.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid book Id:" + id));
         model.addAttribute("book", book);
-        return "adminUpdateBook";
+        return "books/adminUpdateBooks";
     }
 
     @PostMapping("/admin/update/{id}")
     public String updateBook(@PathVariable Long id, @ModelAttribute Book book, RedirectAttributes redirectAttrs) {
-        service.update(id, book);
+        Book existingBook = service.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid book Id:" + id));
+        // Update the fields of the existing book
+        existingBook.setTitle(book.getTitle());
+        existingBook.setAuthor(book.getAuthor());
+        // Set other fields from the book object as needed
+        service.update(id, existingBook);
         redirectAttrs.addFlashAttribute("message", "Book updated successfully.");
         return "redirect:/api/books/admin";
     }
