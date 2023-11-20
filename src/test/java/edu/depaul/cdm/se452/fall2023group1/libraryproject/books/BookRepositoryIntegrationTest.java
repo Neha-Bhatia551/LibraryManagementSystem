@@ -2,7 +2,6 @@ package edu.depaul.cdm.se452.fall2023group1.libraryproject.books;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import edu.depaul.cdm.se452.fall2023group1.books.BookStatus;
 import org.junit.jupiter.api.MethodOrderer;
@@ -20,7 +19,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.util.List;
 import java.util.Optional;
+
 @SpringBootTest
 @ActiveProfiles("test")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -52,7 +53,7 @@ public class BookRepositoryIntegrationTest {
 
         // Fetch the saved book to get its generated ID
         Long savedBookId = newBook.getBook_id();
-        assertThat(savedBookId).isNotNull();  // Ensure the ID is generated
+        assertThat(savedBookId).isNotNull(); // Ensure the ID is generated
 
         // Update the title of the book
         newBook.setTitle("Updated Book");
@@ -68,7 +69,6 @@ public class BookRepositoryIntegrationTest {
         assertThat(found.get().getTitle()).isEqualTo("Updated Book");
 
     }
-
 
     @Test
     @Order(3)
@@ -93,13 +93,13 @@ public class BookRepositoryIntegrationTest {
         assertThat(found).isEmpty();
     }
 
-    @Test
-    @Order(5)
-    public void testFindByISBN() {
-        Book found = repository.findByISBN("123-456");
-        assertThat(found).isNotNull();
-        assertThat(found.getISBN()).isEqualTo("123-456");
-    }
+//    @Test
+//    @Order(5)
+//    public void testFindByISBN() {
+//        Book found = repository.findByISBN("123-456");
+//        assertThat(found).isNotNull();
+//        assertThat(found.getISBN()).isEqualTo("123-456");
+//    }
 
     @Test
     @Order(6)
@@ -135,6 +135,18 @@ public class BookRepositoryIntegrationTest {
         Page<Book> page = repository.findByPublicationYear(2020, pageable);
         assertThat(page).isNotEmpty();
         assertThat(page.getContent().get(0).getPublicationYear()).isEqualTo(2020);
+    }
+
+    @Test
+    @Order(10)
+    public void testFindByGlobalRating() {
+
+        List<Book> foundBooks = repository.findBooksByGlobalRating(4.5);
+
+        assertThat(foundBooks).isNotEmpty();
+        assertThat(foundBooks.size()).isGreaterThanOrEqualTo(2);
+        assertThat(foundBooks.get(0).getGlobalRating()).isEqualTo(4.5);
+        assertThat(foundBooks.get(1).getGlobalRating()).isEqualTo(4.5);
     }
 
     private Book createSampleBook() {

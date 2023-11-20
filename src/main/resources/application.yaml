@@ -1,32 +1,8 @@
-server:
-  port:8080
+spring.profiles.active: prod
+include:
+      #     - "user-hardcoded"
+      - "user-database"
 
-#database properties
-spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: password
-    #    url: "jdbc:h2:mem:library-db"
-    #    driverClassName: "org.h2.Driver"
-#  h2.console.enabled: true
-
-  jpa:
-    show-sql: true
-    hibernate.ddl-auto: create
-    defer-datasource-initialization: true
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-
-  sql:
-    init:
-      mode: always
-
-
-app:
-  doc:
-    version: 2023-Fall
-    title: SE352-452 Library Management development environment
-    description: This is documentation for library management system for SE352-452
-    terms: http://swagger.io/terms/
-    license:  Apache 2.0
-    url: http://springdoc.org
+springdoc:
+  swagger-ui:
+    path: /swagger-ui-custom.html
