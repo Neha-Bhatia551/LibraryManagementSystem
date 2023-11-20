@@ -73,7 +73,7 @@ public class BookReservationControllerTest {
         long afterSize = reservationRepository.count();
         var str = response.andReturn().getResponse().getContentAsString();
         response.andExpect(MockMvcResultMatchers.status().isOk());
-        assertEquals(str,"New reservation id is 3");
+        assertEquals(str,"New reservation id is 4");
         assertEquals(beforeSize + 1, afterSize);
 
     }

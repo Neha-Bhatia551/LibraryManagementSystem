@@ -15,7 +15,7 @@ The Library Management System (LMS) is designed to efficiently manage library op
 - **User functions like - Borrowing a book,searching for a book, returning a book and providing review for a book**
 - **Create a User interface for application where librarian and users would have different views based on their roles**
 - **library appointments**
-- **Book Reservations**
+- **Book Reservations - adding, updating and deleting a book reservation**
 
 ---
 
@@ -48,6 +48,7 @@ Creating a user-friendly interface for borrowers and librarians to access and re
 - learn about JPA and it's implementation 
 - How to compile and run spring application
 - Learn different lombok annotations
+- Thymeleaf, bulma
 
 ---
 

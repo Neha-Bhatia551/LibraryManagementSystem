@@ -12,7 +12,9 @@ package edu.depaul.cdm.se452.fall2023group1.bookreservations;
  * <li> Added extra finders and custom queries
  * <li> learnt about docker and setup postgres along with docker</li>
  * <li> Added a UI layer, used bulma and thymeleaf</li>
- * <li> make sure only available books show up </li>
+ * <li> make sure only available books show up on UI using th:if and th:each </li>
+ * <li> used new features of thymeleaf such a select, how to display enum</li>
+ * <li> add, edit, delete reservations works on UI</li>
  * </ul>
  *
  *

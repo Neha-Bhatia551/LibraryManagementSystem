@@ -19,3 +19,13 @@ VALUES
     (3, 456, 'Book', '01/03/2023 12:00 - 01/03/2023 13:00'),
     (4, 456, 'Study', '01/04/2023 13:00 - 01/04/2023 14:00');
 
+--Neha UI test data
+INSERT INTO Users(user_id, first_name, last_name, email, role) VALUES (1, 'Neha', 'Bhatia', 'world@gmail.com', 'librarian');
+INSERT INTO Users(user_id, first_name, last_name, email, role) VALUES (2, 'Anu', 'Sharma', 'world@gmail.com', 'borrower');
+INSERT INTO Users(user_id, first_name, last_name, email, role) VALUES (3, 'Ruchi', 'Mehta', 'world@gmail.com', 'borrower');
+
+INSERT INTO books (title, author, ISBN, publication_year, genre, description, book_count, status,global_rating)
+VALUES('The three things', 'John william', '123-356-234', 2022, 'Thriller', 'Test Description2', 5, 'AVAILABLE', 4.5),
+      ('All I said', 'Blah', '789-131', 2021, 'Another Genre', 'Another Description', 2, 'AVAILABLE', 3.5);
+
+INSERT INTO BOOKRESERVATIONS (book_id, user_id, borrow_date, return_date, type, checked_out) VALUES (3, 3, '2023-11-10', '2023-11-10', 'DIGITAL', true);
