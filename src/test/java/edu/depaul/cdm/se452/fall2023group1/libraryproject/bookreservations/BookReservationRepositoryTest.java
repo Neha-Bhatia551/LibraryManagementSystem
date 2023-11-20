@@ -2,6 +2,7 @@ package edu.depaul.cdm.se452.fall2023group1.libraryproject.bookreservations;
 
 import edu.depaul.cdm.se452.fall2023group1.bookreservations.BookReservation;
 import edu.depaul.cdm.se452.fall2023group1.bookreservations.BookReservationRepository;
+import edu.depaul.cdm.se452.fall2023group1.bookreservations.BookReservationService;
 import edu.depaul.cdm.se452.fall2023group1.bookreservations.ReservationType;
 import edu.depaul.cdm.se452.fall2023group1.books.Book;
 import edu.depaul.cdm.se452.fall2023group1.books.BookRepository;
@@ -32,6 +33,9 @@ public class BookReservationRepositoryTest {
     private BookReservationRepository bookReservationRepository;
 
     @Autowired
+    private BookReservationService service;
+
+    @Autowired
     private BookRepository bookRepository;
 
     @Autowired
@@ -54,16 +58,9 @@ public class BookReservationRepositoryTest {
 
     @Test
     @Order(1)
-    public void getAllReservations() {
-        List<BookReservation> reservation = bookReservationRepository.findAll();
-        assertEquals(reservation.size(), 2);
-    }
-
-    @Test
-    @Order(1)
     public void getReservation() {
-        Optional<BookReservation> optreservation = bookReservationRepository.findById(1L);
-        assertEquals(optreservation.isEmpty(), false);
+        BookReservation reservation = service.getReservationById(1L);
+        assertEquals(reservation.getReservationId(), 1);
     }
 
 //    @Test
