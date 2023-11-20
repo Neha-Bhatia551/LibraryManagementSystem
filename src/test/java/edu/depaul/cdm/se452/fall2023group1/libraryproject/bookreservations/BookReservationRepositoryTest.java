@@ -39,6 +39,7 @@ public class BookReservationRepositoryTest {
 
     @Test
     @Order(0)
+    @Commit
     public void addReservation() {
         var beforeCount = (int) bookReservationRepository.count();
         Optional<Book> book = bookRepository.findById(1L);
