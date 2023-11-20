@@ -14,15 +14,15 @@
         <form method="post" th:action="@{/bookreservation}" th:object="${reservation}">
             <div class="select">
                 <select th:field="*{book.book_id}" th:required="required">
-                    <option disabled value=" ">Book title</option>
+                    <option disabled value="0">Book title</option>
                     <option th:each="book :${books}" th:if="${book.status.name()} == 'AVAILABLE'" th:value="${book.book_id}" th:text="${book.title}">
                     </option>
                 </select>
             </div>
             <br><br>
             <div class="select">
-                <select th:field="*{user.id}" th:required="required>
-                    <option disabled value="">User</option>
+                <select th:field="*{user.id}" th:required="required">
+                    <option disabled value="0">User</option>
                     <option th:each="user :${users}" th:value="${user.id}" th:text="${user.firstName + ' ' + user.lastName}">
                     </option>
                 </select>
