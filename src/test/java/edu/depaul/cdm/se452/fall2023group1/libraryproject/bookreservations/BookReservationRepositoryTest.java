@@ -48,7 +48,7 @@ public class BookReservationRepositoryTest {
         reservation.setUser(user.get());
         bookReservationRepository.save(reservation);
         var afterCount = (int) bookReservationRepository.count();
-        assertEquals(afterCount , beforeCount );
+        assertEquals(afterCount , beforeCount + 1);
     }
 
 //    @Test
