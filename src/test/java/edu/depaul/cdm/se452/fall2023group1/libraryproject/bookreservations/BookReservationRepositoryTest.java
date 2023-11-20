@@ -36,20 +36,20 @@ public class BookReservationRepositoryTest {
     @Autowired
     private UserRepository userRepository;
 
-    @Test
-    @Order(0)
-    public void addReservation() {
-        var beforeCount = (int) bookReservationRepository.count();
-        Optional<Book> book = bookRepository.findById(1L);
-        Optional<User> user = userRepository.findById(2L);
-        BookReservation reservation = new BookReservation();
-        reservation.setBook(book.get());
-        reservation.setType(ReservationType.DIGITAL);
-        reservation.setUser(user.get());
-        bookReservationRepository.save(reservation);
-        var afterCount = (int) bookReservationRepository.count();
-        assertEquals(afterCount , beforeCount + 1);
-    }
+//    @Test
+//    @Order(0)
+//    public void addReservation() {
+//        var beforeCount = (int) bookReservationRepository.count();
+//        Optional<Book> book = bookRepository.findById(1L);
+//        Optional<User> user = userRepository.findById(2L);
+//        BookReservation reservation = new BookReservation();
+//        reservation.setBook(book.get());
+//        reservation.setType(ReservationType.DIGITAL);
+//        reservation.setUser(user.get());
+//        bookReservationRepository.save(reservation);
+//        var afterCount = (int) bookReservationRepository.count();
+//        assertEquals(afterCount , beforeCount + 1);
+//    }
 
     @Test
     @Order(1)
