@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 
 import lombok.*;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Data
@@ -33,11 +34,12 @@ public class BookReservation {
 
     @Column(name="borrow_date")
     //@NotNull(message = "borrow date cannot be null/blank")
+    private Date borrowDate;
 
-    private Timestamp borrowDate;
     //@NotNull(message = "return date cannot be null/blank")
     @Column(name="return_date")
-    private Timestamp returnDate;
+    private Date returnDate;
+  
     @Enumerated(EnumType.STRING)
     private ReservationType type;
 

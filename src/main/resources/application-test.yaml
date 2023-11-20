@@ -8,9 +8,7 @@ spring:
     driverClassName: "org.h2.Driver"
     username: "sa"
     password: "password"
-#    url: jdbc:postgresql://localhost:5432/postgres
-#    username: postgres
-#    password: password
+
     h2.console.enabled: true
 
   jpa:
@@ -18,7 +16,7 @@ spring:
     hibernate.ddl-auto: create
     defer-datasource-initialization: true
     properties.hibernate.dialect: org.hibernate.dialect.H2Dialect
-    #database-platform: org.hibernate.dialect.PostgreSQLDialect
+
   sql:
     init:
       mode: always

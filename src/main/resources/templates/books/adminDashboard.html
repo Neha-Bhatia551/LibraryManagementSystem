@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+<section class="section">
+    <div class="container">
+        <h1 class="title">Admin Dashboard</h1>
+        <a href="admin/add" class="button is-primary">Add New Book</a>
+
+        <table class="table is-striped is-fullwidth">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.title}">Title</td>
+                <td th:text="${book.author}">Author</td>
+                <td>
+                    <a th:href="@{/api/books/admin/update/{id}(id=${book.book_id})}" class="button is-small is-info">Edit</a>
+                    <a th:href="@{/api/books/admin/delete/{id}(id=${book.book_id})}" class="button is-small is-danger">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>
