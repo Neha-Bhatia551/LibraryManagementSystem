@@ -27,14 +27,14 @@ public class ReviewController {
         }
     }
 
-    @PostMapping("/{id}")
-    public ResponseEntity<?> createReview(@PathVariable Long id, @RequestBody Review review) {
-        return ResponseEntity.ok().body(reviewService.saveOrUpdate(id, review));
+    @PostMapping("/")
+    public ResponseEntity<?> createReview(@RequestBody Review review) {
+        return ResponseEntity.ok().body(reviewService.save(review));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateReview(@PathVariable Long id, @RequestBody Review review) {
-        return ResponseEntity.ok().body(reviewService.saveOrUpdate(id, review));
+        return ResponseEntity.ok().body(reviewService.update(id, review));
     }
 
     @DeleteMapping("/{id}")

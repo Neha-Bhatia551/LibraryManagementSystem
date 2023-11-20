@@ -1,14 +1,11 @@
 package edu.depaul.cdm.se452.fall2023group1.reviews;
 
-import edu.depaul.cdm.se452.fall2023group1.books.Book;
-import edu.depaul.cdm.se452.fall2023group1.books.BookNotFoundException;
 import edu.depaul.cdm.se452.fall2023group1.books.BookRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,13 +22,24 @@ public class ReviewService {
         return reviews.findById(reviewId).orElseThrow(() -> new ReviewNotFoundException("Review with ID " + reviewId + " not found"));
     }
 
-    public Review saveOrUpdate(Long id, Review review) {
-        // ToDo: search and verify id
+    public Review save(Review review) {
+        log.info(review);
+        // ToDo: data validation
         return reviews.save(review);
     }
 
-    public void delete(Long reviewId) {
+    public Review update(Long reviewId, Review newReview) {
+        log.info(reviewId);
+        log.info(newReview);
+        System.out.println(newReview);
+        Review r = reviews.findById(reviewId).orElseThrow(() -> new ReviewNotFoundException("Review with ID " + reviewId + " not found"));
+        r.setStars(newReview.getStars());
+        r.setDescription(newReview.getDescription());
+        System.out.println(r);
+        return reviews.save(r);
+    }
 
+    public void delete(Long reviewId) {
         if (!reviews.existsById(reviewId)) {
             throw new ReviewNotFoundException("Review with ID " + reviewId + " not found");
         }
