@@ -15,6 +15,7 @@
             <div class="select">
                 <select th:field="*{book.book_id}" th:required="required">
                     <option disabled value="0">Book title</option>
+
                     <option th:each="book :${books}" th:if="${book.status.name()} == 'AVAILABLE'" th:value="${book.book_id}" th:text="${book.title}">
                     </option>
                 </select>

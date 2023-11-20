@@ -39,6 +39,7 @@ public class BookReservation {
     //@NotNull(message = "return date cannot be null/blank")
     @Column(name="return_date")
     private Date returnDate;
+  
     @Enumerated(EnumType.STRING)
     private ReservationType type;
 
