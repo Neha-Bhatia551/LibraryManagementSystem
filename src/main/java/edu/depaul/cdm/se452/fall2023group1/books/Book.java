@@ -1,5 +1,8 @@
 package edu.depaul.cdm.se452.fall2023group1.books;
-
+/**
+ * Represents the book in the library.
+ * It includes fields which are  essential for book information such as ISBN, title, author, etc.
+ * */
 import edu.depaul.cdm.se452.fall2023group1.bookreservations.BookReservation;
 import edu.depaul.cdm.se452.fall2023group1.reviews.Review;
 import jakarta.persistence.*;
@@ -15,6 +18,9 @@ import java.util.List;
 @Entity
 @Table(name = "books")
 public class Book {
+    /**
+     * Unique identifier for the book.
+     * */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long book_id;

@@ -117,6 +117,7 @@ public class BookController {
         model.addAttribute("books", books);
         return "searchResults";
     }
+
     @GetMapping("/user")
     public String showUserPage() {
         return "user";
