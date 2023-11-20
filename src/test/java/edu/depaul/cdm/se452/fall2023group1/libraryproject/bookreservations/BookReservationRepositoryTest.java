@@ -39,7 +39,6 @@ public class BookReservationRepositoryTest {
 
     @Test
     @Order(0)
-    @Commit
     public void addReservation() {
         var beforeCount = (int) bookReservationRepository.count();
         Optional<Book> book = bookRepository.findById(1L);
@@ -54,26 +53,18 @@ public class BookReservationRepositoryTest {
     }
 
     @Test
-    @Commit
     @Order(1)
     public void getAllReservations() {
         List<BookReservation> reservation = bookReservationRepository.findAll();
-        assertEquals(reservation.size(), 3);
+        assertEquals(reservation.size(), 2);
     }
 
-//    @Test
-//    @Order(1)
-//    public void getReservation() {
-//        Optional<Book> book = bookRepository.findById(1L);
-//        Optional<User> user = userRepository.findById(2L);
-//        BookReservation reservation = new BookReservation();
-//        reservation.setBook(book.get());
-//        reservation.setType(ReservationType.DIGITAL);
-//        reservation.setUser(user.get());
-//        bookReservationRepository.save(reservation);
-//        Optional<BookReservation> optreservation = bookReservationRepository.findById(1L);
-//        assertEquals(optreservation.isPresent(), true);
-//    }
+    @Test
+    @Order(1)
+    public void getReservation() {
+        Optional<BookReservation> optreservation = bookReservationRepository.findById(1L);
+        assertEquals(optreservation.isEmpty(), false);
+    }
 
 //    @Test
 //    @Order(2)
