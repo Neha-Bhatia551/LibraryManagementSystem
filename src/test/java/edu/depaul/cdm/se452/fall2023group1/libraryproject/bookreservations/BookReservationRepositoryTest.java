@@ -19,6 +19,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,12 +60,12 @@ public class BookReservationRepositoryTest {
         assertEquals(afterCount , beforeCount + 1);
     }
 
-//    @Test
-//    @Order(1)
-//    public void getReservation() {
-//        BookReservation reservation = service.getReservationById(1L);
-//        assertEquals(reservation.getReservationId(), 1);
-//    }
+    @Test
+    @Order(1)
+    public void testGetReservation() {
+        BookReservation reservation = service.getReservationById(1L);
+        assertEquals(reservation.getReservationId(), 1);
+    }
 
 //    @Test
 //    @Order(2)
@@ -97,18 +99,33 @@ public class BookReservationRepositoryTest {
 //
 //    }
 //
-//    @Test
-//    @Order(5)
-//    public void deleteReservation() {
-//        var beforeCount = (int) bookReservationRepository.count();
-//        bookReservationRepository.deleteById(1L);
-//        var afterCount = (int) bookReservationRepository.count();
-//        assertEquals(afterCount, beforeCount - 1);
-//    }
+
+    @Test
+    @Order(4)
+    public void testUpdateReservation() {
+        Optional<Book> book = bookRepository.findById(1L);
+        Optional<User> user = userRepository.findById(2L);
+        Optional<User> user2 = userRepository.findById(1L);
+        BookReservation reservation = new BookReservation();
+        reservation.setBook(book.get());
+        reservation.setType(ReservationType.DIGITAL);
+        reservation.setUser(user.get());
+        bookReservationRepository.save(reservation);
+        assertThat(reservation.getBorrowDate()).isNull();
+        Long savedId = reservation.getReservationId();
+        assertThat(savedId).isNotNull(); // Ensure the ID is generated
+        java.sql.Date now = new java.sql.Date( new java.util.Date().getTime() );
+        java.sql.Date tomorrow= new java.sql.Date( now.getTime() + 24*60*60*1000);
+        reservation.setBorrowDate(tomorrow);
+        bookReservationRepository.save(reservation);
+        Optional<BookReservation> found = bookReservationRepository.findById(savedId);
+        assertThat(found.get().getBorrowDate()).isNotNull();
+    }
+
 
     @Test
     @Order(5)
-    public void deleteReservation() {
+    public void testDeleteReservation() {
         Optional<Book> book = bookRepository.findById(1L);
         Optional<User> user = userRepository.findById(2L);
         BookReservation reservation = new BookReservation();
