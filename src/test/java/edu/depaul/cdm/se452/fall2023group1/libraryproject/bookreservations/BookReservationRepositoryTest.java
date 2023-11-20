@@ -53,17 +53,24 @@ public class BookReservationRepositoryTest {
 
     @Test
     @Order(1)
-    public void getReservation() {
-        Optional<Book> book = bookRepository.findById(1L);
-        Optional<User> user = userRepository.findById(2L);
-        BookReservation reservation = new BookReservation();
-        reservation.setBook(book.get());
-        reservation.setType(ReservationType.DIGITAL);
-        reservation.setUser(user.get());
-        bookReservationRepository.save(reservation);
-        Optional<BookReservation> optreservation = bookReservationRepository.findById(1L);
-        assertEquals(optreservation.isPresent(), true);
+    public void getAllReservations() {
+        List<BookReservation> reservation = bookReservationRepository.findAll();
+        assertEquals(reservation.size(), 3);
     }
+
+//    @Test
+//    @Order(1)
+//    public void getReservation() {
+//        Optional<Book> book = bookRepository.findById(1L);
+//        Optional<User> user = userRepository.findById(2L);
+//        BookReservation reservation = new BookReservation();
+//        reservation.setBook(book.get());
+//        reservation.setType(ReservationType.DIGITAL);
+//        reservation.setUser(user.get());
+//        bookReservationRepository.save(reservation);
+//        Optional<BookReservation> optreservation = bookReservationRepository.findById(1L);
+//        assertEquals(optreservation.isPresent(), true);
+//    }
 
 //    @Test
 //    @Order(2)
