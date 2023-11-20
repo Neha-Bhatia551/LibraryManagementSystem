@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/bulma/css/bulma.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/font-awesome/css/all.min.css}" />
+    <script type="text/javascript" th:src="@{/javascript/libraryManagement.js}"></script>
+</head>
+<body class="ml-3">
+<p class="title">List of Books</p>
+<div th:if="${#lists.isEmpty(books)}">No Books</div>
+<div th:unless="${#lists.isEmpty(books)}">
+    <table class="table is-striped is-bordered">
+        <tr>
+            <th>Id</th>
+            <th>ISBN</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>publicationyear</th>
+            <th>genre</th>
+            <th>book Count </th>
+            <th>Status </th>
+            <th>Global Rating </th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        <tr>
+        <tr th:each="book: ${books}">
+            <td th:text="${book.books_id}"></td>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.publicationYear}"></td>
+            <td th:text="${book.gener}"></td>
+            <td th:text="${book.description}"></td>
+            <td th:text="${book.bookCount}"></td>
+            <td th:text="${book.status}"></td>
+            <td th:text="${book.globalRating}"></td>
+            <td><a th:href="'book/update/' + ${book.books_id}"><i class="fas fa-user-edit ml-2"></i></a></td>
+            <td><a th:href="'book/delete/' + ${book.books_id}"><i class="fas fa-user-times ml-2"></i></a></td>
+        </tr>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
