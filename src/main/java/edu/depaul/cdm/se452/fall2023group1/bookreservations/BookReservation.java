@@ -33,6 +33,7 @@ public class BookReservation {
 
     @Column(name="borrow_date")
     //@NotNull(message = "borrow date cannot be null/blank")
+
     private Timestamp borrowDate;
     //@NotNull(message = "return date cannot be null/blank")
     @Column(name="return_date")

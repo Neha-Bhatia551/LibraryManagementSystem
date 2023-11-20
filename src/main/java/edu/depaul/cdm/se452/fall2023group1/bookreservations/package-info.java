@@ -11,7 +11,8 @@ package edu.depaul.cdm.se452.fall2023group1.bookreservations;
  * <li> used JsonIgnoreProperties annotation AND @Transactional
  * <li> Added extra finders and custom queries
  * <li> learnt about docker and setup postgres along with docker</li>
- * <li></li>
+ * <li> Added a UI layer, used bulma and thymeleaf</li>
+ * <li> make sure only available books show up </li>
  * </ul>
  *
  *
@@ -20,7 +21,9 @@ package edu.depaul.cdm.se452.fall2023group1.bookreservations;
 
 /**
  * TODO's
- * add exception handling
+ * add exception handling, add validations - se4520-misc-starter
  * add update reservation apis
+ * add UI layer - template-ui-starter
+ * error msgs in resource bundle
 
  */
