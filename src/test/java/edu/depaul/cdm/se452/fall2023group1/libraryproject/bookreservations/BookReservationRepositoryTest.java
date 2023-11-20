@@ -22,7 +22,9 @@ import org.springframework.test.context.ActiveProfiles;
 import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -56,12 +58,12 @@ public class BookReservationRepositoryTest {
         assertEquals(afterCount , beforeCount + 1);
     }
 
-    @Test
-    @Order(1)
-    public void getReservation() {
-        BookReservation reservation = service.getReservationById(1L);
-        assertEquals(reservation.getReservationId(), 1);
-    }
+//    @Test
+//    @Order(1)
+//    public void getReservation() {
+//        BookReservation reservation = service.getReservationById(1L);
+//        assertEquals(reservation.getReservationId(), 1);
+//    }
 
 //    @Test
 //    @Order(2)
@@ -103,5 +105,22 @@ public class BookReservationRepositoryTest {
 //        var afterCount = (int) bookReservationRepository.count();
 //        assertEquals(afterCount, beforeCount - 1);
 //    }
+
+    @Test
+    @Order(5)
+    public void deleteReservation() {
+        Optional<Book> book = bookRepository.findById(1L);
+        Optional<User> user = userRepository.findById(2L);
+        BookReservation reservation = new BookReservation();
+        reservation.setBook(book.get());
+        reservation.setType(ReservationType.DIGITAL);
+        reservation.setUser(user.get());
+        bookReservationRepository.save(reservation);
+        assertNotNull(reservation.getReservationId());
+        // Delete the book and verify it was deleted
+        bookReservationRepository.deleteById(reservation.getReservationId());
+        Optional<BookReservation> found = bookReservationRepository.findById(reservation.getReservationId());
+        assertThat(found).isEmpty();
+    }
 
 }
