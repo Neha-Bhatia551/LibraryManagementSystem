@@ -15,6 +15,7 @@ package edu.depaul.cdm.se452.fall2023group1.bookreservations;
  * <li> make sure only available books show up on UI using th:if and th:each </li>
  * <li> used new features of thymeleaf such a select, how to display enum</li>
  * <li> add, edit, delete reservations works on UI</li>
+ * <li> access ui at - http://localhost:8001/ and book reservations at - http://localhost:8001/bookreservation
  * </ul>
  *
  *
@@ -24,8 +25,6 @@ package edu.depaul.cdm.se452.fall2023group1.bookreservations;
 /**
  * TODO's
  * add exception handling, add validations - se4520-misc-starter
- * add update reservation apis
- * add UI layer - template-ui-starter
  * error msgs in resource bundle
 
  */

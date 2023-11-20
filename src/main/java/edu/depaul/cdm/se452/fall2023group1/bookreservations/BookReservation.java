@@ -4,6 +4,8 @@ import edu.depaul.cdm.se452.fall2023group1.books.Book;
 import edu.depaul.cdm.se452.fall2023group1.user.User;
 import jakarta.persistence.*;
 
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.sql.Date;
@@ -33,10 +35,10 @@ public class BookReservation {
     private User user;
 
     @Column(name="borrow_date")
-    //@NotNull(message = "borrow date cannot be null/blank")
+    @NotNull(message = "borrow date cannot be null/blank")
     private Date borrowDate;
 
-    //@NotNull(message = "return date cannot be null/blank")
+    @NotNull(message = "return date cannot be null/blank")
     @Column(name="return_date")
     private Date returnDate;
   
