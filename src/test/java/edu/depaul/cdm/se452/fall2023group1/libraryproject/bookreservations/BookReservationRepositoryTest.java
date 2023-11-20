@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.List;
@@ -52,6 +53,7 @@ public class BookReservationRepositoryTest {
     }
 
     @Test
+    @Commit
     @Order(1)
     public void getAllReservations() {
         List<BookReservation> reservation = bookReservationRepository.findAll();
