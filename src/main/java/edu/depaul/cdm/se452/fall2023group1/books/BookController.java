@@ -8,13 +8,18 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-@RestController
+@Controller
 @RequestMapping("/api/books")
 @Tag(name = "book", description = "Get  all Book details")
 public class BookController {
@@ -22,29 +27,31 @@ public class BookController {
     @Autowired
     private BookService service;
 
-    @GetMapping
+    @GetMapping("/list")
     @Operation(summary = "Get a list of all books")
     @ApiResponse(responseCode = "200", description = "Success", content = {
             @Content(mediaType = "application/json", schema = @Schema(implementation = Book.class)) })
-    public List<Book> list() {
-        return service.list();
+    public String list(Model model) {
+        List<Book> books = service.list();
+        model.addAttribute("books", books);
+        return "listBooks";
     }
 
-    @PostMapping
-    @Operation(summary = "Add a new book")
-    @ApiResponse(responseCode = "201", description = "Book created", content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Book.class)) })
-    public Book add(@RequestBody Book book) {
-        return service.add(book);
-    }
+//    @PostMapping
+//    @Operation(summary = "Add a new book")
+//    @ApiResponse(responseCode = "201", description = "Book created", content = {
+//            @Content(mediaType = "application/json", schema = @Schema(implementation = Book.class)) })
+//    public Book add(@RequestBody Book book) {
+//        return service.add(book);
+//    }
 
-    @PutMapping("/{id}")
-    @Operation(summary = "Update book details by ID")
-    @ApiResponse(responseCode = "200", description = "Book updated", content = {
-            @Content(mediaType = "application/json", schema = @Schema(implementation = Book.class)) })
-    public Book update(@PathVariable Long id, @RequestBody Book book) {
-        return service.update(id, book);
-    }
+//    @PutMapping("/{id}")
+//    @Operation(summary = "Update book details by ID")
+//    @ApiResponse(responseCode = "200", description = "Book updated", content = {
+//            @Content(mediaType = "application/json", schema = @Schema(implementation = Book.class)) })
+//    public Book update(@PathVariable Long id, @RequestBody Book book) {
+//        return service.update(id, book);
+//    }
 
     @GetMapping("/{id}")
     @Operation(summary = "Get book details by ID")
@@ -102,4 +109,63 @@ public class BookController {
     public ResponseEntity<String> handleExceptions(BookNotFoundException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
+    @GetMapping("/search")
+    public String searchBooks(@RequestParam String query,
+                              @RequestParam String filterType,
+                              Pageable pageable, Model model) {
+        Page<Book> books =service.searchBooks(query, filterType, pageable);
+        model.addAttribute("books", books);
+        return "searchResults";
+    }
+    @GetMapping("/user")
+    public String showUserPage() {
+        return "user";
+    }
+    // Admin dashboard
+    @GetMapping("/admin")
+    public String adminDashboard(Model model) {
+        List<Book> books = service.list();
+        model.addAttribute("books", books);
+        return "adminDashboard";
+    }
+
+    // Add a new book
+    @GetMapping("/admin/add")
+    public String showAddBookForm(Model model) {
+        model.addAttribute("book", new Book());
+        return "adminAddBook";
+    }
+
+
+    @PostMapping("/admin/add")
+    public String addBook(@ModelAttribute Book book, RedirectAttributes redirectAttrs) {
+        service.add(book);
+        redirectAttrs.addFlashAttribute("message", "Book added successfully.");
+        return "redirect:/api/books/admin";
+    }
+
+    // Update a book
+    @GetMapping("/admin/update/{id}")
+    public String showUpdateBookForm(@PathVariable Long id, Model model) {
+        Book book = service.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid book Id:" + id));
+        model.addAttribute("book", book);
+        return "adminUpdateBook";
+    }
+
+    @PostMapping("/admin/update/{id}")
+    public String updateBook(@PathVariable Long id, @ModelAttribute Book book, RedirectAttributes redirectAttrs) {
+        service.update(id, book);
+        redirectAttrs.addFlashAttribute("message", "Book updated successfully.");
+        return "redirect:/api/books/admin";
+    }
+
+    @GetMapping("/admin/delete/{id}")
+    public String deleteBook(@PathVariable Long id, RedirectAttributes redirectAttrs) {
+        service.delete(id);
+        redirectAttrs.addFlashAttribute("message", "Book deleted successfully.");
+        return "redirect:/api/books/admin";
+    }
+
+
 }

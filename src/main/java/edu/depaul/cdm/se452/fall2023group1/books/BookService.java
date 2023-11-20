@@ -141,18 +141,14 @@ public class BookService {
         }
     }
 
-    @SneakyThrows
-    public Book findByISBN(String isbn) {
+    public Page<Book> findByISBN(String isbn, Pageable pageable) {
         log.info("Entering the findByISBN method.");
         try {
-            var book = repository.findByISBN(isbn);
-            log.info("Exiting the findByISBN method successfully.");
-            return book;
+            return repository.findByISBN(isbn, pageable);
         } catch (Exception e) {
             log.error("Exception caught in findByISBN method: " + e.getMessage());
             throw e;
-        }
-    }
+        }}
 
     @SneakyThrows
     public List<Book> findBooksByGlobalRating(double rating) {
@@ -167,4 +163,32 @@ public class BookService {
         }
     }
 
+    @SneakyThrows
+    public Page<Book> searchBooks(String query, String filterType, Pageable pageable) {
+        log.info("Entering the searchBooks method.");
+        Page<Book> books;
+        try {
+            switch (filterType.toLowerCase()) {
+                case "author":
+                    books = repository.findByAuthor(query, pageable);
+                    break;
+                case "title":
+                    books = repository.findByTitle(query, pageable);
+                    break;
+                case "genre":
+                    books = repository.findByGenre(query, pageable);
+                    break;
+                case "isbn":
+                    books = repository.findByISBN(query, pageable);
+                    break;
+                default:
+                    books = Page.empty();
+            }
+            log.info("Exiting the searchBooks method successfully.");
+            return books;
+        } catch (Exception e) {
+            log.error("Exception caught in searchBooks method: " + e.getMessage());
+            throw e;
+        }
+    }
 }

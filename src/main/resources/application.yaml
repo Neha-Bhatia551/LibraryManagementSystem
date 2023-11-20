@@ -1,12 +1,8 @@
-spring:
-  profiles:
-    active: prd
-
-    include:
+spring.profiles.active: prod
+include:
       #     - "user-hardcoded"
       - "user-database"
-      - "jwt"
-#     - "non-jwt"
+
 springdoc:
   swagger-ui:
     path: /swagger-ui-custom.html

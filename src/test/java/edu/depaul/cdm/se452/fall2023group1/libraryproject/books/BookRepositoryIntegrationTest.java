@@ -93,13 +93,13 @@ public class BookRepositoryIntegrationTest {
         assertThat(found).isEmpty();
     }
 
-    @Test
-    @Order(5)
-    public void testFindByISBN() {
-        Book found = repository.findByISBN("123-456");
-        assertThat(found).isNotNull();
-        assertThat(found.getISBN()).isEqualTo("123-456");
-    }
+//    @Test
+//    @Order(5)
+//    public void testFindByISBN() {
+//        Book found = repository.findByISBN("123-456");
+//        assertThat(found).isNotNull();
+//        assertThat(found.getISBN()).isEqualTo("123-456");
+//    }
 
     @Test
     @Order(6)

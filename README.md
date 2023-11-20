@@ -45,7 +45,9 @@ Creating a user-friendly interface for borrowers and librarians to access and re
 - Get to know about the 12 factors involved in application development.
 - How to use the spring Initializer to implement  [Maven](https://maven.apache.org/download.cgi)  dependencies.
 - Understood Git operations 
+- learn about JPA and it's implementation 
 - How to compile and run spring application
+- Learn different lombok annotations
 
 ---
 
@@ -58,19 +60,20 @@ Creating a user-friendly interface for borrowers and librarians to access and re
 | Project Scope           | Library Management System                                                          | The scope of a Library Management System (LMS) project includes the development and implementation of core features such as book and borrower management, user interfaces, data storage.                                                     |
 | Communication Mechanism | Microsoft Teams and Emails                                                         | We decided to use these platforms for communication because everyone is active on teams and everyone keeps constantly checking their emails                                                                                                  |
 | Merging Branches        | Make a PR, get the other team members to review and approve it, and then merge it. | Everyone would be aware of the modifications each of us has made. In this way conflicts can also be avoided.                                                                                                                                 |
-
+ | Deployment              | [Docker](https://www.docker.com/)|In order to expedite the process of developing, testing, and deploying applications across various environments, Docker is extensively utilized in the field of software development and deployment. It facilitates the management of dependencies and guarantees that an application operates consistently across many contexts by offering a repeatable and consistent environment.|
 
 <br>
 
 ## Project Members
 NOTE: Right now, area's that we all are going to work on are really vague, hoping that as time goes by we would figure out what each member is accurately doing and update readme accordingly and also incorporate professor's feedback. 
-| Member                 | Area                           | Saying                         |
-|------------------------|--------------------------------|--------------------------------|
-| Uma Sailendra Muthyala | Book                           | Knowledge is power             |
-| Sergei Kalachev        | Review                         | Si vis pacem, para bellum      |
-| Daniel Sakelaris       | Functions                      | YOLO                           |
-| Neha Bhatia            | BookReservation                | Hardwork is the key to success |
-| Zaeem Khan             | User                           | Work smarter not harder        |
+
+| Member                 | Area            | Saying                         |
+|------------------------|-----------------|--------------------------------|
+| Uma Sailendra Muthyala | Books           | Knowledge is power             |
+| Sergei Kalachev        | Review          | Si vis pacem, para bellum      |
+| Daniel Sakelaris       | Functions       | YOLO                           |
+| Neha Bhatia            | BookReservation | Hardwork is the key to success |
+| Zaeem Khan             | User            | Work smarter not harder        |
 
 <br/>
 
