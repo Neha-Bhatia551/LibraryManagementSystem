@@ -63,8 +63,8 @@ public class BookReservationRepositoryTest {
     @Test
     @Order(1)
     public void testGetReservation() {
-        BookReservation reservation = service.getReservationById(1L);
-        assertEquals(reservation.getReservationId(), 1);
+        Optional<BookReservation> reservation = bookReservationRepository.findById(1L);
+        assertEquals(reservation.isPresent(), true);
     }
 
 //    @Test
