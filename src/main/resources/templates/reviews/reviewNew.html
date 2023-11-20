@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mock Book list</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/bulma/css/bulma.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/font-awesome/css/all.min.css}" />
+    <script type="text/javascript" th:src="@{/javascript/libraryManagement.js}"></script>
+</head>
+<body>
+    <h1 th:text="'Write a new review for book with id: , ' + ${id}"></h1>
+
+
+    <form method="post" th:object="${review}" class="mt-5">
+        <div class="control">
+            <label class="radio">
+                <input type="radio" name="rating">
+                1
+            </label>
+
+            <label class="radio">
+                <input type="radio" name="rating">
+                2
+            </label>
+            <label class="radio" disabled>
+                <input type="radio" name="rating">
+                3
+            </label>
+            <label class="radio" disabled>
+                <input type="radio" name="rating">
+                4
+            </label>
+            <label class="radio" disabled>
+                <input type="radio" name="rating">
+                5
+            </label>
+        </div>
+        <textarea class="textarea" placeholder="Type something about this book"></textarea>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+        <div>submit is not working yet</div>
+    </form>
+</body>
+</html>
+
