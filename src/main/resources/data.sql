@@ -5,9 +5,9 @@ INSERT INTO books (title, author, ISBN, publication_year, genre, description, bo
 INSERT INTO Users(user_id, first_name, last_name, email, role) VALUES (123, 'Zaeem', 'Khan', 'hello@gmail.com', 'borrower');
 INSERT INTO Users(user_id, first_name, last_name, email, role) VALUES (456, 'Zaeem', 'Khan', 'world@gmail.com', 'librarian');
 
-INSERT INTO reviews (user_id, book_id, stars, description) VALUES (123, 223, 5, 'pretty good book. I wish I actually opened it');
-INSERT INTO reviews (user_id, book_id, stars, description) VALUES (123, 1234, 4, 'a short description for book 1234');
-INSERT INTO reviews (user_id, book_id, stars, description) VALUES (456, 223, 3, 'another review for book 223');
+INSERT INTO reviews (user_id, book_id, isbn, stars, description) VALUES (123, 1, '123-456-234', 5, 'pretty good book. I wish I actually opened it');
+INSERT INTO reviews (user_id, book_id, isbn, stars, description) VALUES (123, 2, '789-101', 4, 'a short description for book 2');
+INSERT INTO reviews (user_id, book_id, isbn, stars, description) VALUES (456, 1, '123-456-234', 3, 'another review for book 1');
 
 INSERT INTO BOOKRESERVATIONS (book_id, user_id, borrow_date, return_date, type, checked_out) VALUES (1, 1, '2023-11-10', '2023-11-10', 'DIGITAL', true);
 INSERT INTO BOOKRESERVATIONS (book_id, user_id, borrow_date, return_date, type, checked_out) VALUES (2, 2, '2023-11-10', '2023-11-10', 'PHYSICAL', false);

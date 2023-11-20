@@ -55,7 +55,8 @@ public class Book {
     // @OneToOne(mappedBy = "book", cascade = CascadeType.ALL)
     // private BookReservation bookReservation;
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-    private List<Review> reviews;
+    // Todo work with the team
+//    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+//    private List<Review> reviews;
 
 }
