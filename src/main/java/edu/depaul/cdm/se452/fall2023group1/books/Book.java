@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Books")
+@Table(name = "books")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +35,7 @@ public class Book {
     private Integer publicationYear;
 
     @Column()
+    // @NotNull(message = "genre cannot be null")
     private String genre;
 
     @Column()
@@ -50,12 +51,11 @@ public class Book {
     @Column()
     private double globalRating;
 
-// Todo work with the team
-   // @OneToOne(mappedBy = "book", cascade = CascadeType.ALL)
+    // Todo work with the team
+    // @OneToOne(mappedBy = "book", cascade = CascadeType.ALL)
     // private BookReservation bookReservation;
 
-   @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-     private List<Review> reviews;
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    private List<Review> reviews;
 
 }
-
