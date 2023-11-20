@@ -65,7 +65,7 @@ public class BookReservationControllerTest {
         Optional<Book> book = service.findById(1L);
         Optional<User> user = userRepository.findById(1L);
         BookReservation reservation = BookReservation.builder().book(book.get()).
-                user(user.get()).borrowDate(currentTimestamp).returnDate(currentTimestamp).type(ReservationType.DIGITAL).build();
+                user(user.get()).borrowDate(new java.sql.Date(2023-11-10)).returnDate(new java.sql.Date(2023-11-10)).type(ReservationType.DIGITAL).build();
         String reservationAsJson = objectMapper.writeValueAsString(reservation);
         var request = MockMvcRequestBuilders.post(RESERVATION_URL)
                 .contentType(MediaType.APPLICATION_JSON).content(reservationAsJson);
