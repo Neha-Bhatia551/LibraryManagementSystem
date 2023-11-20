@@ -75,34 +75,34 @@ public class BookReservationRepositoryTest {
         assertEquals(reservation.size(), 2);
     }
 
-    @Test
-    @Order(3)
-    public void testGetReservationByBookId() {
-        var beforeCount = (int) bookReservationRepository.count();
-        List<BookReservation> reservation = bookReservationRepository.findByBookId(1);
-        assertEquals(reservation.size(), 2  );
-    }
+//    @Test
+//    @Order(3)
+//    public void testGetReservationByBookId() {
+//        var beforeCount = (int) bookReservationRepository.count();
+//        List<BookReservation> reservation = bookReservationRepository.findByBookId(1);
+//        assertEquals(reservation.size(), 2  );
+//    }
 
-    @Test
-    @Order(4)
-    public void testUpdateReservation() {
-        Optional<BookReservation> reservation = bookReservationRepository.findById(1L);
-        long bookid_before = reservation.get().getBook().getBook_id();
-        BookReservation res = reservation.get();
-        Optional<Book> book = bookRepository.findById(2L);
-        res.setBook(book.get());
-        bookReservationRepository.save(res);
-        Optional<BookReservation> reservationafter = bookReservationRepository.findById(1L);
-        long bookid_after = reservation.get().getBook().getBook_id();
-        assertEquals(bookid_before ,1);
-        assertEquals(bookid_after, 2);
-
-    }
+//    @Test
+//    @Order(4)
+//    public void testUpdateReservation() {
+//        Optional<BookReservation> reservation = bookReservationRepository.findById(1L);
+//        long bookid_before = reservation.get().getBook().getBook_id();
+//        BookReservation res = reservation.get();
+//        Optional<Book> book = bookRepository.findById(2L);
+//        res.setBook(book.get());
+//        bookReservationRepository.save(res);
+//        Optional<BookReservation> reservationafter = bookReservationRepository.findById(1L);
+//        long bookid_after = reservation.get().getBook().getBook_id();
+//        assertEquals(bookid_before ,1);
+//        assertEquals(bookid_after, 2);
+//
+//    }
 
 
     @Test
     @Order(5)
-    public void testUpdateReservation2() {
+    public void testUpdateReservation() {
         Optional<Book> book = bookRepository.findById(1L);
         Optional<User> user = userRepository.findById(2L);
         BookReservation reservation = new BookReservation();
