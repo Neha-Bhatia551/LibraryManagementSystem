@@ -55,13 +55,13 @@ public class BookControllerTest {
 //        assertEquals("Test Book", addedBook.getTitle());
 //    }
 
-//    @Test
-//    public void testUpdateNonExistentBook() {
-//        Book book = new Book();
-//        book.setBook_id(99L);
-//        when(bookService.update(any(Long.class), any(Book.class))).thenThrow(new BookNotFoundException(99L));
-//        Exception exception = assertThrows(BookNotFoundException.class, () -> bookController.update(99L, book));
-//        logger.info("Exception message: {}", exception.getMessage());
-//        assertEquals("Book id not found : 99", exception.getMessage());
-//    }
+//      @Test
+//      public void testUpdateNonExistentBook() {
+//          Book book = new Book();
+//          book.setBook_id(99L);
+//          when(bookService.update(any(Long.class), any(Book.class))).thenThrow(new BookNotFoundException(99L));
+//          Exception exception = assertThrows(BookNotFoundException.class, () -> bookController.update(99L, book));
+//          logger.info("Exception message: {}", exception.getMessage());
+//          assertEquals("Book id not found : 99", exception.getMessage());
+//     }
 }

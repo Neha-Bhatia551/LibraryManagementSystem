@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/bulma/css/bulma.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/font-awesome/css/all.min.css}" />
+    <script type="text/javascript" th:src="@{/javascript/libraryManagement.js}"></script>
+</head>
+<body class="ml-3">
+<p class="title">List of Books</p>
+<div th:if="${#lists.isEmpty(books)}">No Books</div>
+<div th:unless="${#lists.isEmpty(books)}">
+
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Add a New Book</h1>
+            <form th:action="@{/api/books/admin/add}" th:object="${book}" method="post" class="form">
+                <div class="field">
+                    <label class="label">ISBN</label>
+                    <div class="control">
+                        <input class="input" type="text" th:field="*{book.isbn}" placeholder="ISBN" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Title</label>
+                    <div class="control">
+                        <input class="input" type="text" th:field="*{book.title}" placeholder="Title" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Author</label>
+                    <div class="control">
+                        <input class="input" type="text" th:field="*{book.author}" placeholder="Author" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">PublicationYear</label>
+                    <div class="control">
+                        <input class="input" type="text" th:field="*{book.publicationyear}" placeholder="PublicationYear" >
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Genre</label>
+                    <div class="control">
+                        <input class="input" type="text" th:field="*{book.genre}" placeholder="Genre" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Description</label>
+                    <div class="control">
+                        <input class="input" type="text" th:field="*{book.description}" placeholder="description">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">BookCount</label>
+                    <div class="control">
+                        <input class="input" type="text" th:field="*{book.bookCount}" placeholder="BookCount" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Status</label>
+                    <div class="control">
+                        <input class="input" type="text" th:field="*{book.status}" placeholder="Status" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">GlobalRating</label>
+                    <div class="control">
+                        <input class="input" type="text" th:field="*{book.globalRating}" placeholder="GlobalRating">
+                    </div>
+                </div>
+                <!-- Add more fields as necessary -->
+                <div class="field">
+                    <div class="control">
+                        <button type="submit" class="button is-link">Add Book</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <table class="table is-striped is-bordered">
+        <tr>
+            <th>Id</th>
+            <th>ISBN</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>publicationyear</th>
+            <th>genre</th>
+            <th>book Count </th>
+            <th>Status </th>
+            <th>Global Rating </th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        <tr>
+        <tr th:each="book: ${books}">
+            <td th:text="${book.books_id}"></td>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.publicationYear}"></td>
+            <td th:text="${book.gener}"></td>
+            <td th:text="${book.description}"></td>
+            <td th:text="${book.bookCount}"></td>
+            <td th:text="${book.status}"></td>
+            <td th:text="${book.globalRating}"></td>
+            <td><a th:href="'book/update/' + ${book.books_id}"><i class="fas fa-user-edit ml-2"></i></a></td>
+            <td><a th:href="'book/delete/' + ${book.books_id}"><i class="fas fa-user-times ml-2"></i></a></td>
+        </tr>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

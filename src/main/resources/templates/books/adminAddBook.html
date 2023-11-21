@@ -10,15 +10,57 @@
         <h1 class="title">Add a New Book</h1>
         <form th:action="@{/api/books/admin/add}" th:object="${book}" method="post" class="form">
             <div class="field">
+                <label class="label">ISBN</label>
+                <div class="control">
+                    <input class="input" type="text" th:field="*{book.isbn}" placeholder="ISBN" required>
+                </div>
+            </div>
+            <div class="field">
                 <label class="label">Title</label>
                 <div class="control">
-                    <input class="input" type="text" th:field="*{book.title}" placeholder="Title">
+                    <input class="input" type="text" th:field="*{book.title}" placeholder="Title" required>
                 </div>
             </div>
             <div class="field">
                 <label class="label">Author</label>
                 <div class="control">
-                    <input class="input" type="text" th:field="*{book.author}" placeholder="Author">
+                    <input class="input" type="text" th:field="*{book.author}" placeholder="Author" required>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">PublicationYear</label>
+                <div class="control">
+                    <input class="input" type="text" th:field="*{book.publicationyear}" placeholder="PublicationYear" >
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Genre</label>
+                <div class="control">
+                    <input class="input" type="text" th:field="*{book.genre}" placeholder="Genre" required>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Description</label>
+                <div class="control">
+                    <input class="input" type="text" th:field="*{book.description}" placeholder="description">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">BookCount</label>
+                <div class="control">
+                    <input class="input" type="text" th:field="*{book.bookCount}" placeholder="BookCount" required>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Status</label>
+                <div class="control">
+                    <input class="input" type="text" th:field="*{book.status}" placeholder="Status" required>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">GlobalRating</label>
+                <div class="control">
+                    <input class="input" type="text" th:field="*{book.globalRating}" placeholder="GlobalRating">
                 </div>
             </div>
             <!-- Add more fields as necessary -->
