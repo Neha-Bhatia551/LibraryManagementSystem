@@ -1,5 +1,8 @@
 package edu.depaul.cdm.se452.fall2023group1.books;
-
+/**
+ * Represents the book in the library.
+ * It includes fields which are  essential for book information such as ISBN, title, author, etc.
+ * */
 import edu.depaul.cdm.se452.fall2023group1.bookreservations.BookReservation;
 import edu.depaul.cdm.se452.fall2023group1.reviews.Review;
 import jakarta.persistence.*;
@@ -13,8 +16,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Books")
+@Table(name = "books")
 public class Book {
+    /**
+     * Unique identifier for the book.
+     * */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long book_id;
@@ -35,6 +41,7 @@ public class Book {
     private Integer publicationYear;
 
     @Column()
+    // @NotNull(message = "genre cannot be null")
     private String genre;
 
     @Column()
@@ -50,12 +57,12 @@ public class Book {
     @Column()
     private double globalRating;
 
-// Todo work with the team
-   // @OneToOne(mappedBy = "book", cascade = CascadeType.ALL)
+    // Todo work with the team
+    // @OneToOne(mappedBy = "book", cascade = CascadeType.ALL)
     // private BookReservation bookReservation;
 
-   @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-     private List<Review> reviews;
+    // Todo work with the team
+//    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+//    private List<Review> reviews;
 
 }
-

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mock Book list</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/bulma/css/bulma.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/font-awesome/css/all.min.css}" />
+    <script type="text/javascript" th:src="@{/javascript/libraryManagement.js}"></script>
+</head>
+<body>
+    <h1 class="title">All our books so far:</h1>
+    <div class="container">
+        <div th:each="book : ${books}" class="flex">
+            <div class="card mb-3 light-blue columns">
+                <div class="column is-one-quarter">
+                    <img src="" alt="some book image" style="width:200px;height:200px;">
+                </div>
+                <div class="column">
+                    <p><span th:text="'Tite: ' + ${book.title}"> Title </span></p>
+                    <p><span th:text="'Author: ' + ${book.author}"> Author </span></p>
+                    <p><span th:text="'ISBN: ' + ${book.ISBN}"> ISBN </span></p>
+                    <p><span th:text="'Year: ' + ${book.publicationYear}"> Year </span></p>
+                    <div class="mr-3">
+                        <a th:href="'/api/mock/books/'+${book.book_id}+'/reviews'" class="is-link mr-3">See reviews</a>
+                        <a th:href="'/api/mock/books/'+${book.book_id}+'/new-review'" class="bg-light-red is-link">Write a review</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+

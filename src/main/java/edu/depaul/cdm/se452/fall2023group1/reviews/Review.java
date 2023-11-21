@@ -2,21 +2,21 @@ package edu.depaul.cdm.se452.fall2023group1.reviews;
 
 import edu.depaul.cdm.se452.fall2023group1.books.Book;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import jakarta.validation.constraints.Max;
+import lombok.*;
+
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "reviews")
 @Data
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
+@AllArgsConstructor
+@Builder
 @NoArgsConstructor(force = true)
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    @NonNull
     private Long reviewId;
 
     @Column(name = "user_id")
@@ -27,13 +27,14 @@ public class Review {
     @NonNull
     private Long bookId;
 
-    @ManyToOne
-    @JoinColumn(name = "isbn", referencedColumnName = "ISBN")
     @NonNull
-    private Book book;
+    @Column(name = "isbn")
+    private String isbn;
 
     @Column(name = "stars")
     @NonNull
+    @Min(1)
+    @Max(5)
     private Integer stars;
 
     @Column(name = "description")

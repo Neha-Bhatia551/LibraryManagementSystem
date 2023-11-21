@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search Results</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+<section class="section">
+    <form th:action="@{/api/books/search}" method="get" class="field has-addons">
+        <div class="control">
+            <input class="input" type="text" name="query" placeholder="Enter your search..." required>
+        </div>
+        <div class="control">
+            <div class="select">
+                <select name="filterType">
+                    <option value="title">Title</option>
+                    <option value="author">Author</option>
+                    <option value="genre">Genre</option>
+                    <option value="isbn">ISBN</option>
+                </select>
+            </div>
+        </div>
+        <div class="control">
+            <button type="submit" class="button is-link">Search</button>
+        </div>
+    </form>
+
+</section>
+</body>
+</html>

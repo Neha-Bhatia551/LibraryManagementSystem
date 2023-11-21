@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Course</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/bulma/css/bulma.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/font-awesome/css/all.min.css}" />
+</head>
+
+<body>
+<div class="hero">
+    <div>
+        <p class="title">Course Detail</p>
+        <form method="post" th:action="@{/user}" th:object="${user}">
+            <input class="input" id="userId" placeholder="" required th:field="*{userId}" type="text" readonly />
+            <input class="input" id="firstName" placeholder="Enter First Name" required th:field="*{firstName}" type="text" />
+            <input class="input" id="lastName" placeholder="Enter Last Name" required th:field="*{lastName}" type="text" />
+            <input class="input" id="email" placeholder="Enter Email" required th:field="*{email}"
+                   type="text" />
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-link" th:text="${btnAddOrModifyLabel}"></button>
+
+                </div>
+                <div class="control">
+                    <button class="button is-link is-light">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    &nbsp;
+    &nbsp;
+    <p class="title">Course List</p>
+    <div th:if="${#lists.isEmpty(users)}">No Users</div>
+    <div th:unless="${#lists.isEmpty(users)}">
+        <table class="table is-striped is-bordered">
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="user: ${users}">
+                <td th:text="${user.userId}"></td>
+                <td th:text="${user.firstName}"></td>
+                <td th:text="${user.lastName}"></td>
+                <td th:text="${user.email}"></td>
+                <td><a th:href="'user/delete/' + ${user.id}"><i class="fas fa-user-times ml-2"></i></a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+
+</html>

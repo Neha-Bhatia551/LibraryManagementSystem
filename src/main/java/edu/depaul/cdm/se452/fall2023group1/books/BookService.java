@@ -2,7 +2,11 @@ package edu.depaul.cdm.se452.fall2023group1.books;
 
 import lombok.extern.log4j.Log4j2;
 import lombok.SneakyThrows;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -81,6 +85,109 @@ public class BookService {
             return book;
         } catch (Exception e) {
             log.error("Exception caught in findById method: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @SneakyThrows
+    public Page<Book> findByTitle(String title, Pageable pageable) {
+        log.info("Entering the findByTitle method.");
+        try {
+            var books = repository.findByTitle(title, pageable);
+            log.info("Exiting the findByTitle method successfully.");
+            return books;
+        } catch (Exception e) {
+            log.error("Exception caught in findByTitle method: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @SneakyThrows
+    public Page<Book> findByAuthor(String author, Pageable pageable) {
+        log.info("Entering the findByAuthor method.");
+        try {
+            var books = repository.findByAuthor(author, pageable);
+            log.info("Exiting the findByAuthor method successfully.");
+            return books;
+        } catch (Exception e) {
+            log.error("Exception caught in findByAuthor method: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @SneakyThrows
+    public Page<Book> findByGenre(String genre, Pageable pageable) {
+        log.info("Entering the findByGenre method.");
+        try {
+            var books = repository.findByGenre(genre, pageable);
+            log.info("Exiting the findByGenre method successfully.");
+            return books;
+        } catch (Exception e) {
+            log.error("Exception caught in findByGenre method: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @SneakyThrows
+    public Page<Book> findByPublicationYear(int year, Pageable pageable) {
+        log.info("Entering the findByPublicationYear method.");
+        try {
+            var books = repository.findByPublicationYear(year, pageable);
+            log.info("Exiting the findByPublicationYear method successfully.");
+            return books;
+        } catch (Exception e) {
+            log.error("Exception caught in findByPublicationYear method: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    public Page<Book> findByISBN(String isbn, Pageable pageable) {
+        log.info("Entering the findByISBN method.");
+        try {
+            return repository.findByISBN(isbn, pageable);
+        } catch (Exception e) {
+            log.error("Exception caught in findByISBN method: " + e.getMessage());
+            throw e;
+        }}
+
+    @SneakyThrows
+    public List<Book> findBooksByGlobalRating(double rating) {
+        log.info("Entering the findBooksByGlobalRating method.");
+        try {
+            var books = repository.findBooksByGlobalRating(rating);
+            log.info("Exiting the findBooksByGlobalRating method successfully.");
+            return books;
+        } catch (Exception e) {
+            log.error("Exception caught in findBooksByGlobalRating method: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    @SneakyThrows
+    public Page<Book> searchBooks(String query, String filterType, Pageable pageable) {
+        log.info("Entering the searchBooks method.");
+        Page<Book> books;
+        try {
+            switch (filterType.toLowerCase()) {
+                case "author":
+                    books = repository.findByAuthor(query, pageable);
+                    break;
+                case "title":
+                    books = repository.findByTitle(query, pageable);
+                    break;
+                case "genre":
+                    books = repository.findByGenre(query, pageable);
+                    break;
+                case "isbn":
+                    books = repository.findByISBN(query, pageable);
+                    break;
+                default:
+                    books = Page.empty();
+            }
+            log.info("Exiting the searchBooks method successfully.");
+            return books;
+        } catch (Exception e) {
+            log.error("Exception caught in searchBooks method: " + e.getMessage());
             throw e;
         }
     }

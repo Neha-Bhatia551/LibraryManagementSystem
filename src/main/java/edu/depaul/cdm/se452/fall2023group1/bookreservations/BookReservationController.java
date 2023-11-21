@@ -1,79 +1,97 @@
 package edu.depaul.cdm.se452.fall2023group1.bookreservations;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import jakarta.validation.Valid;
-import lombok.extern.log4j.Log4j2;
+
+import edu.depaul.cdm.se452.fall2023group1.books.Book;
+import edu.depaul.cdm.se452.fall2023group1.books.BookService;
+import edu.depaul.cdm.se452.fall2023group1.user.User;
+import edu.depaul.cdm.se452.fall2023group1.user.UserRepository;
+import edu.depaul.cdm.se452.fall2023group1.user.UserService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import java.util.List;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
-@RestController
-@RequestMapping("/api/bookreservations")
-@Tag(name = "BookReservation", description = "All Book reservations")
-@Log4j2
+@Controller
+@RequestMapping("/bookreservation")
 public class BookReservationController {
 
     @Autowired
     private BookReservationService service;
 
-    //TODO: Handle if service returns null, show appropriate message to the user
+    @Autowired
+    private BookService bookService;
 
+    @Autowired
+    private UserRepository repository;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping
-    @Operation(summary = "Returns all the reservations from the database")
-    @ApiResponse(responseCode = "200", description = "valid response",
-            content = {@Content(mediaType="application/json", schema=@Schema(implementation=BookReservation.class))})
-    public List<BookReservation> list() {
-        return service.getAllReservations();
+    public String list(Model model, HttpSession session) {
+        model.addAttribute("reservations", service.getAllReservations());
+        model.addAttribute("books", bookService.list());
+        model.addAttribute("users", userService.list());
+        if (session.getAttribute("reservation") == null) {
+            model.addAttribute("reservation", new BookReservation());
+            model.addAttribute("btnAddOrModifyLabel", "Reserve Book");
+        } else {
+            model.addAttribute("reservation", session.getAttribute("reservation"));
+            model.addAttribute("btnAddOrModifyLabel", "Modify Book");
+        }
+        return "bookreservations/list";
     }
 
-    @GetMapping("/id/{id}")
-    @Operation(summary = "Returns the reservation associated with that ID from the database")
-    @ApiResponse(responseCode = "200", description = "valid response",
-            content = {@Content(mediaType="application/json", schema=@Schema(implementation=BookReservation.class))})
-    public BookReservation getBookReservationById(@PathVariable long id) {
-        return service.getReservationById(id);
+    @GetMapping("/edit/{id}")
+    public String get(@PathVariable("id") Long id, Model model, HttpSession session) {
+        session.setAttribute("reservation", service.getReservationById(id));
+        return "redirect:/bookreservation";
     }
 
     @PostMapping
-    @Operation(summary = "Save the reservation and returns the reservation id")
-    public ResponseEntity<String> save(@Valid @RequestBody BookReservation reservation) {
-        service.save(reservation);
-        return ResponseEntity.ok("New reservation id is " + reservation.getReservationId());
+    public String save(@ModelAttribute BookReservation reservation, HttpSession session) {
+        if (reservation.getReservationId() == 0) {
+            java.sql.Date now = new java.sql.Date(new java.util.Date().getTime());
+            reservation.setBorrowDate(now);
+            reservation.setCheckedOut(true);
+            service.save(reservation);
+        } else {
+            var editReservation = service.getReservationById(reservation.getReservationId());
+            Optional<Book> book = bookService.findById(reservation.getBook().getBook_id());
+            Optional<User> user = repository.findById(reservation.getUser().getId());
+            editReservation.setBook(book.get());
+            editReservation.setUser(user.get());
+            editReservation.setReturnDate(reservation.getReturnDate());
+            editReservation.setType(reservation.getType());
+            service.save(editReservation);
+            session.setAttribute("reservation", null);
+        }
+        return "redirect:/bookreservation";
     }
 
-    @DeleteMapping("delete/id/{id}")
-    @Operation(summary = "Delete the reservation")
-    public void delete(@PathVariable long id) {
-        //TODO: check role of the user before deleting reservation
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Long id, Model model) {
         service.deleteReservation(id);
+        return "redirect:/bookreservation";
     }
 
-    @GetMapping("/userid/{userid}")
-    @Operation(summary = "Returns the reservations associated with that user ID from the database")
-    @ApiResponse(responseCode = "200", description = "valid response",
-            content = {@Content(mediaType="application/json", schema=@Schema(implementation=BookReservation.class))})
-    public List<BookReservation> getBookReservationsByUserId(@PathVariable int userid) {
-        return service.getReservationsByUserId(userid);
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return errors;
     }
-
-    @GetMapping("/bookid/{bookid}")
-    @Operation(summary = "Returns the reservations associated with that book ID from the database")
-    @ApiResponse(responseCode = "200", description = "valid response",
-            content = {@Content(mediaType="application/json", schema=@Schema(implementation=BookReservation.class))})
-    public List<BookReservation> getBookReservationsByBookId(@PathVariable int bookid) {
-        return service.getReservationsByBookId(bookid);
-    }
-
-
-
-    //TODO: implement update api to update return date of a reservation
-    //TODO: handle exceptions
-
-
 }
