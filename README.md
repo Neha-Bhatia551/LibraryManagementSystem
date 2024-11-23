@@ -44,6 +44,8 @@ The Library Management System (LMS) is designed to efficiently manage library op
 | Neha Bhatia            | BookReservation | Hardwork is the key to success |
 | Zaeem Khan             | User            | Work smarter not harder        |
 
+---
+
 <br/>
 
 ## Conflict Resolution
